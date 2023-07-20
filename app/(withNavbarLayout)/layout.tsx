@@ -1,4 +1,5 @@
-import "./globals.css";
+import { TestComponent } from "@/modules/ui/Header/Navbar/TestComponent";
+import "../globals.css";
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <h1>Test root layout</h1>
+        <TestComponent />
         {children}
       </body>
     </html>

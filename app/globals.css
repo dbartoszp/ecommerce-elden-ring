@@ -6,6 +6,17 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --gold: #f2d16d;
+  --light-green: #466748;
+  --light-green-lighter: #6aa56e;
+  /* --light-green-lighter: #5d8a60; */
+  --dark-green: #131b1b;
+  --light-brown: #b07943;
+  --dark-brown: #3d2a17;
+  --beige: #e9e1bb;
+  --light-olive: #bcbe8c;
+  --dark-olive: #677356;
+  --dark-blue: #181f1d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +28,5 @@
 }
 
 body {
-  color: black;
-  background: rgb(116, 116, 116);
+  background: rgb(214, 214, 214);
 }
