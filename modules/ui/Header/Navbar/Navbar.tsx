@@ -9,10 +9,11 @@ import {
   HiXMark,
 } from "react-icons/hi2";
 import { Drawer } from "../../Drawer/Drawer";
+import { Button } from "../../Button/Button";
 
 const iconSize = 30;
 
-export function TestComponent() {
+export function Navbar() {
   const [toggleMenuMobile, setToggleMenuMobile] = useState(false);
 
   return (
@@ -78,6 +79,10 @@ export function TestComponent() {
         isOpen={toggleMenuMobile}
         belowNavbar={true}
       />
+
+      {/* <div className="bg-dark-green">
+        <Button />
+      </div> */}
     </>
   );
 }

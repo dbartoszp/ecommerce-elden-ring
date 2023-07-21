@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { HiArrowRight, HiXMark } from "react-icons/hi2";
+import { HiArrowLeft, HiArrowRight, HiXMark } from "react-icons/hi2";
 
 type DrawerProps = {
   isOpen: boolean;
