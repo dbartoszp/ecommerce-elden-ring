@@ -22,6 +22,7 @@ module.exports = {
         "light-brown": "var(--light-brown)",
         "dark-brown": "var(--dark-brown)",
         "light-olive": "var(--light-olive)",
+        "light-olive-lighter": "var(--light-olive-lighter)",
         "dark-olive": "var(--dark-olive)",
         "dark-blue": "var(--dark-blue)",
       },

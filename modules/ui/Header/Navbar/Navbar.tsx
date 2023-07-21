@@ -31,25 +31,35 @@ export function Navbar() {
         </button>
         <ul className="hidden md:flex md:flex-row  md:space-x-8 lg:space-x-12">
           <li className="hidden md:ml-8 md:block lg:ml-12">
-            <Link href="2">MELEE</Link>
+            <Button variant="link" to="/melee">
+              MELEE
+            </Button>
           </li>
           <li className="hidden md:block">
-            <Link href="2">SORCERY</Link>
+            <Button variant="link" to="/sorcery">
+              SORCERY
+            </Button>
           </li>
           <li className="hidden md:block">
-            <Link href="2">OTHER</Link>
+            <Button variant="link" to="/other">
+              OTHER
+            </Button>
           </li>
         </ul>
 
         <div>
-          <span>(LOGO)</span>
+          <Button to="/" variant="primary">
+            <span>(LOGO)</span>
+          </Button>
         </div>
 
         <ul className="flex md:flex-row  md:space-x-6 lg:space-x-8">
           <li className="hidden md:block">
-            <Link href="2">ABOUT US</Link>
+            <Button variant="link" to="/about">
+              ABOUT US
+            </Button>
           </li>
-          <li>
+          <li className="flex items-center">
             <input
               className="hidden w-32 rounded-md bg-dark-green px-1 md:block"
               type="text"
@@ -57,19 +67,28 @@ export function Navbar() {
             />
           </li>
           <li className="md:hidden">
-            <Link href="2">
+            <Button size="sm" variant="primary" to="/search">
               <HiMagnifyingGlass size={iconSize} />
-            </Link>
+            </Button>
+            {/* <Link href="2">
+              <HiMagnifyingGlass size={iconSize} />
+            </Link> */}
           </li>
           <li>
-            <Link href="2">
+            <Button size="sm" variant="primary" to="/cart">
               <HiShoppingCart size={iconSize} />
-            </Link>
+            </Button>
+            {/* <Link href="2">
+              <HiShoppingCart size={iconSize} />
+            </Link> */}
           </li>
           <li className="hidden md:block">
-            <Link href="2">
+            <Button size="sm" variant="primary" to="/user">
               <HiUserCircle size={iconSize} />
-            </Link>
+            </Button>
+            {/* <Link href="2">
+              <HiUserCircle size={iconSize} />
+            </Link> */}
           </li>
         </ul>
       </nav>
@@ -79,10 +98,6 @@ export function Navbar() {
         isOpen={toggleMenuMobile}
         belowNavbar={true}
       />
-
-      {/* <div className="bg-dark-green">
-        <Button />
-      </div> */}
     </>
   );
 }
