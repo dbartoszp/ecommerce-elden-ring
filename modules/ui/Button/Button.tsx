@@ -5,6 +5,7 @@ type ButtonProps = {
   size?: string;
   variant?: string;
   to?: string;
+  disabled?: boolean;
   children: React.ReactNode;
 };
 
@@ -31,9 +32,10 @@ const variants: ClassNames = {
 export function Button({
   onClick,
   size = "md",
-  variant = "secondary",
+  variant = "primary",
   to = "#",
   children,
+  disabled = false,
 }: ButtonProps) {
   let fullClassName = "transition-all duration-300" + " ";
 
@@ -42,9 +44,29 @@ export function Button({
   fullClassName += sizes[size] + " " || "";
   fullClassName += variants[variant] + " " || "";
 
+  if (onClick && to)
+    return (
+      <Link href={to}>
+        <button disabled={disabled} onClick={onClick} className={fullClassName}>
+          {children}
+        </button>
+      </Link>
+    );
+
+  if (onClick)
+    return (
+      <Link href="#">
+        <button disabled={disabled} onClick={onClick} className={fullClassName}>
+          {children}
+        </button>
+      </Link>
+    );
+
   return (
     <Link href={to}>
-      <button className={fullClassName}>{children}</button>
+      <button disabled={disabled} className={fullClassName}>
+        {children}
+      </button>
     </Link>
   );
 }

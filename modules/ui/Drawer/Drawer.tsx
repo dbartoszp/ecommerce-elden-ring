@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { HiArrowLeft, HiArrowRight, HiXMark } from "react-icons/hi2";
+import { HiArrowRight, HiXMark } from "react-icons/hi2";
 
 type DrawerProps = {
   isOpen: boolean;
@@ -62,7 +62,7 @@ export function Drawer({
               className="mx-4 border-b border-elden-beige pb-1 pl-8"
               key={category}
             >
-              <Link className="flex items-center" href="#">
+              <Link className="flex items-center" href={category}>
                 <span className="flex-1">{category}</span>
                 <div className="pr-3 text-elden-beige">
                   <HiArrowRight size={iconSize * 0.8} />
@@ -75,7 +75,7 @@ export function Drawer({
               className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize"
               key={misc}
             >
-              <Link className="flex items-center" href="#">
+              <Link className="flex items-center" href={misc}>
                 <span className="flex-1">{misc}</span>
               </Link>
             </li>

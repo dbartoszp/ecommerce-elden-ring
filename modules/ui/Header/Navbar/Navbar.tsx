@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed left-0 right-0 top-0 flex items-center justify-between border-b border-light-olive bg-light-green  p-3 uppercase text-elden-beige">
+      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b-2 border-light-olive bg-light-green  p-3 uppercase text-elden-beige">
         <button
           className="md:hidden"
           onClick={() => setToggleMenuMobile(!toggleMenuMobile)}
@@ -41,8 +41,8 @@ export function Navbar() {
             </Button>
           </li>
           <li className="hidden md:block">
-            <Button variant="link" to="/other">
-              OTHER
+            <Button variant="link" to="/all">
+              ALL
             </Button>
           </li>
         </ul>

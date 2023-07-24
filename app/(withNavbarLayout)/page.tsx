@@ -1,5 +1,10 @@
-import Image from "next/image";
+import { HomepageHeader } from "@/modules/ui/Header/HomepageHeader/HomepageHeader";
 
 export default function Home() {
-  return <div>koks</div>;
+  return (
+    <main>
+      <HomepageHeader />
+      <div className="mt-12">koksu</div>
+    </main>
+  );
 }
