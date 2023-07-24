@@ -37,7 +37,7 @@ export function Button({
   children,
   disabled = false,
 }: ButtonProps) {
-  let fullClassName = "transition-all duration-300" + " ";
+  let fullClassName = "font-semibold transition-all duration-300" + " ";
 
   // fullClassName += "m-6 "; // TESTING
 

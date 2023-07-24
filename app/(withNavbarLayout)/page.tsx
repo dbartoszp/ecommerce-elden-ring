@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main>
       <HomepageHeader />
-      <div className="mt-12">koksu</div>
+      <div className="mt-[40rem]">koksu</div>
     </main>
   );
 }
