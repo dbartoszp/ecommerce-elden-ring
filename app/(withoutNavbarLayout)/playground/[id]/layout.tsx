@@ -1,4 +1,4 @@
-import { Navbar } from "@/modules/ui/Header/Navbar/Navbar";
+import { Navbar } from "@/modules/ui/Navbar/Navbar";
 
 export default function TestIDLayout({
   children,

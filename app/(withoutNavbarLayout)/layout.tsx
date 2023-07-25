@@ -1,4 +1,4 @@
-import { Navbar } from "@/modules/ui/Header/Navbar/Navbar";
+import { Navbar } from "@/modules/ui/Navbar/Navbar";
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";

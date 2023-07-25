@@ -1,5 +1,5 @@
-import { Footer } from "@/modules/ui/Footer/Footer";
-import { HomepageHeader } from "@/modules/ui/Header/HomepageHeader/HomepageHeader";
+import { Footer } from "@/modules/Footer/Footer";
+import { HomepageHeader } from "@/modules/HomepageHeader/HomepageHeader";
 import { Separator } from "@/modules/ui/Separator/Separator";
 
 export default function Home() {

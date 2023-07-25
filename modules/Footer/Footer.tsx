@@ -1,5 +1,5 @@
-import { Button } from "../Button/Button";
-import { ImageCard } from "../ImageCard/ImageCard";
+import { Button } from "../ui/Button/Button";
+import { ImageCard } from "../ui/ImageCard/ImageCard";
 import { FooterItem } from "./FooterItem/FooterItem";
 import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
 

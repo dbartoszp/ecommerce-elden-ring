@@ -8,22 +8,22 @@ import {
   HiUserCircle,
   HiXMark,
 } from "react-icons/hi2";
-import { Drawer } from "../../Drawer/Drawer";
-import { Button } from "../../Button/Button";
+import { Drawer } from "../Drawer/Drawer";
+import { Button } from "../Button/Button";
 
 const iconSize = 30;
 
-export function Navbar() {
-  const [toggleMenuMobile, setToggleMenuMobile] = useState(false);
+type NavbarProps = {
+  onToggleMobileMenu: () => void;
+  isOpenMobileMenu: boolean;
+};
 
+export function Navbar({ onToggleMobileMenu, isOpenMobileMenu }: NavbarProps) {
   return (
     <>
       <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b-2 border-light-olive bg-light-green  p-3 uppercase text-elden-beige">
-        <button
-          className="md:hidden"
-          onClick={() => setToggleMenuMobile(!toggleMenuMobile)}
-        >
-          {toggleMenuMobile ? (
+        <button className="md:hidden" onClick={onToggleMobileMenu}>
+          {isOpenMobileMenu ? (
             <HiXMark size={iconSize} />
           ) : (
             <HiBars3 size={iconSize} />
@@ -92,12 +92,6 @@ export function Navbar() {
           </li>
         </ul>
       </nav>
-      <Drawer
-        iconSize={iconSize}
-        onClose={() => setToggleMenuMobile(false)}
-        isOpen={toggleMenuMobile}
-        belowNavbar={true}
-      />
     </>
   );
 }

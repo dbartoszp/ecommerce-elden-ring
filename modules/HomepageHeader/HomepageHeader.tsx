@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import headerBackground from "@/public/images/homepage-header-bg.jpg";
 import Image from "next/image";
-import { Button } from "../../Button/Button";
+import { Button } from "../ui/Button/Button";
 
 export function HomepageHeader() {
   return (
-    <section className="relative z-30 mt-[4.3rem] h-[755px] w-full 2xl:h-[865px]">
+    <header className="relative z-30 mt-[4.3rem] h-[755px] w-full 2xl:h-[865px]">
       <Image
         width={1280}
         height={720}
@@ -35,6 +35,6 @@ export function HomepageHeader() {
           </Button>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
