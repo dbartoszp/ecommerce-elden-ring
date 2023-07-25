@@ -18,13 +18,13 @@ export function HomepageHeader() {
           textShadow:
             "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black",
         }}
-        className="absolute bottom-16 left-8 space-y-2 stroke-2 text-elden-beige md:left-24"
+        className="absolute bottom-16 left-8 space-y-2 stroke-2 text-elden-beige md:left-[20%]"
       >
         <h1 className="text-4xl font-bold tracking-widest">
           Choose the perfect weapon.
         </h1>
         <h2 className="text-xl font-semibold tracking-wide">
-          Affordable. Sharp. Enchanted. We've got it all.
+          Affordable. Sharp. Enchanted. We&apos;ve got it all.
         </h2>
         <div className="space-x-6">
           <Button variant="secondary" to="melee">
