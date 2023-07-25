@@ -47,7 +47,7 @@ export function Navbar() {
           </li>
         </ul>
 
-        <div>
+        <div className="absolute left-1/2 -translate-x-1/2 transform">
           <Button to="/" variant="primary">
             <span>(LOGO)</span>
           </Button>
