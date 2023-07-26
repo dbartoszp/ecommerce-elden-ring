@@ -1,4 +1,5 @@
 import { Button } from "../ui/Button/Button";
+import { Link } from "../ui/Button/Link";
 import { ImageCard } from "../ui/ImageCard/ImageCard";
 import { FooterItem } from "./FooterItem/FooterItem";
 import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
@@ -31,28 +32,22 @@ export function Footer() {
           </div>
         </FooterItem>
         <FooterItem>
-          <div className="flex-col">
-            <div className="justify-between">
-              <Button variant="link" to="contact">
-                Contact
-              </Button>
-              <Button variant="link" to="faq">
-                FAQ
-              </Button>
-              <Button variant="link" to="about">
-                About
-              </Button>
+          <div className="flex-col space-y-4">
+            <div className="justify-between space-x-4">
+              <Link href="contact">Contact</Link>
+              <Link href="faq">FAQ</Link>
+              <Link href="about">About</Link>
             </div>
-            <div className="justify-between text-2xl">
-              <Button variant="link" to="#">
+            <div className="flex justify-between space-x-4 text-2xl">
+              <Link href="#">
                 <BsTwitter />
-              </Button>
-              <Button variant="link" to="#">
+              </Link>
+              <Link href="#">
                 <BsFacebook />
-              </Button>
-              <Button variant="link" to="#">
+              </Link>
+              <Link href="#">
                 <BsGithub />
-              </Button>
+              </Link>
             </div>
           </div>
         </FooterItem>
