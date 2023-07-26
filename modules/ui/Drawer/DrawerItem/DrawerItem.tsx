@@ -8,7 +8,7 @@ type DrawerItemProps = {
 
 export function DrawerItem({ category, iconSize }: DrawerItemProps) {
   return (
-    <Link className="flex items-center" href={category}>
+    <Link className="flex items-center text-elden-beige" href={category}>
       <span className="flex-1">{category}</span>
       <div className="pr-3 text-elden-beige">
         <HiArrowRight size={iconSize * 0.8} />

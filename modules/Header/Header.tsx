@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { Link } from "../ui/Button/Link";
 import { Button } from "../ui/Button/Button";
 import {
+  HiBars3,
   HiMagnifyingGlass,
   HiShoppingCart,
   HiUserCircle,
@@ -22,18 +23,20 @@ export const Header = () => {
 
   return (
     <header>
-      <NavbarCompound
-        isOpenMobileMenu={isOpenMobileMenu}
-        onToggleMobileMenu={onMobileToggleMenu}
-      >
+      <NavbarCompound>
         <NavbarCompound.NavbarItem visibility="mobile">
           <Button onClick={onMobileToggleMenu}>
-            <HiXMark size={iconSize} />
+            {isOpenMobileMenu ? (
+              <HiXMark size={iconSize} />
+            ) : (
+              <HiBars3 size={iconSize} />
+            )}
           </Button>
         </NavbarCompound.NavbarItem>
+
         <NavbarCompound.Group>
           <NavbarCompound.NavbarGroupItem visibility="desktop">
-            <Link href="/">MELEE</Link>
+            <Link href="/dsd">MELEE</Link>
           </NavbarCompound.NavbarGroupItem>
 
           <NavbarCompound.NavbarGroupItem visibility="desktop">

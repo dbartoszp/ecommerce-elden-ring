@@ -54,7 +54,7 @@ export const BaseButton = (props: BaseButtonProps) => {
   });
   if (props.as === "a") {
     return (
-      <Link {...props} className={className}>
+      <Link href={props.href} className={className}>
         {props.children}
       </Link>
     );
