@@ -2,15 +2,9 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core/core.cjs";
 import { faker } from "@faker-js/faker";
 import supabase from "../../services/supabase.mjs";
 
-// const { ApolloClient, InMemoryCache, gql } = require("@apollo/client/core");
-// const faker = require("@faker-js/faker");
-// const supabase = require("../../services/supabase.js");
-
-// Now you can use ApolloClient, InMemoryCache, gql, faker, and supabase in your code.
-
 const GET_WEAPONS = gql`
   query {
-    weapon(limit: 10) {
+    weapon(limit: 30) {
       id
       name
       image
@@ -88,13 +82,4 @@ const seedWeapons = async () => {
   }
 };
 
-const clearWeapons = async () => {
-  const { error } = await supabase.from("Weapons").delete().neq("id", 2137);
-};
-// Napisanie skryptu, który pobierze z GraphQL elden ring api 30 przedmiotów(bronii), następnie
-// dodasz per przedmiot losowo wygenerowaną cene(faker-js chyba ma taka opcje) zapisaną w
-// groszach i w tabeli Supabase utworzysz nową wartość weapons gdzie będziesz miał id, itemId,
-// reszte pól oraz pole z groszami
-
 seedWeapons();
-// clearWeapons();

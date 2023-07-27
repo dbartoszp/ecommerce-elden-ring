@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "seed-weapons": "node ./seeds/weapons/weaponsSeeder.mjs"
+    "seed-weapons": "node ./seeds/weapons/weaponsSeeder.mjs",
+    "clear-weapons": "node ./seeds/weapons/clearWeapons.mjs"
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",
