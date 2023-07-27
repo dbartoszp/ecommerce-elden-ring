@@ -1,6 +1,7 @@
 import clsx from "clsx";
-import Link from "next/link";
-import { HiArrowRight, HiXMark } from "react-icons/hi2";
+import { HiXMark } from "react-icons/hi2";
+import { DrawerItem } from "./DrawerItem/DrawerItem";
+import { Button } from "../Button/Button";
 
 type DrawerProps = {
   isOpen: boolean;
@@ -27,24 +28,16 @@ export function Drawer({
   belowNavbar = false,
 }: DrawerProps) {
   return (
-    // idk dlaczego ale w ten sposob nie tracking-wider nie daje efektu, tak samo z text-elden-beige
-    // <main
-    //   className={
-    //     "tracking-wider" + belowNavbar
-    //       ? "mt-[55px] text-elden-beige"
-    //       : "text-elden-beige"
-    //   }
-    // >
     <main
       className={
         belowNavbar
-          ? "mt-[55px] tracking-wider text-elden-beige"
-          : "tracking-wider text-elden-beige"
+          ? "z-50 mt-[55px] tracking-wider text-elden-beige"
+          : "z-50 tracking-wider text-elden-beige"
       }
     >
       <section
         className={clsx(
-          "delay-400 absolute left-0 h-full w-screen transform bg-light-green-lighter shadow-xl transition-all duration-500 ease-in-out",
+          "delay-400 fixed left-0 z-40 h-full w-screen transform  bg-light-green-lighter shadow-xl transition-all duration-500 ease-in-out",
           { "translate-x-0": isOpen, "-translate-x-full": !isOpen },
         )}
       >
@@ -62,12 +55,7 @@ export function Drawer({
               className="mx-4 border-b border-elden-beige pb-1 pl-8"
               key={category}
             >
-              <Link className="flex items-center" href="#">
-                <span className="flex-1">{category}</span>
-                <div className="pr-3 text-elden-beige">
-                  <HiArrowRight size={iconSize * 0.8} />
-                </div>
-              </Link>
+              <DrawerItem iconSize={iconSize} category={category} />
             </li>
           ))}
           {testingMisc?.map((misc) => (
@@ -75,9 +63,7 @@ export function Drawer({
               className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize"
               key={misc}
             >
-              <Link className="flex items-center" href="#">
-                <span className="flex-1">{misc}</span>
-              </Link>
+              <DrawerItem iconSize={iconSize} category={misc} />
             </li>
           ))}
         </ul>

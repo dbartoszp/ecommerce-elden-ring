@@ -1,10 +1,11 @@
-import { TestComponent } from "@/modules/ui/Header/Navbar/TestComponent";
+import { Navbar } from "@/modules/ui/Navbar/Navbar";
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
+import { Header } from "@/modules/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ weight: "100", subsets: ["cyrillic"] });
+const roboto = Roboto({ weight: "300", subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <TestComponent />
+        <Header />
         {children}
       </body>
     </html>
