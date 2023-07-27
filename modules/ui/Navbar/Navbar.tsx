@@ -5,14 +5,11 @@ type NavbarProps = {
   children: ReactNode;
 };
 
-
-export function Navbar({
-  children,
-}: NavbarProps) {
+export function Navbar({ children }: NavbarProps) {
   return (
-      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b-2 border-light-olive bg-light-green  p-3 uppercase text-elden-beige">
-        {children}
-      </nav>
+    <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b-2 border-light-olive bg-light-green  p-3 uppercase text-elden-beige">
+      {children}
+    </nav>
   );
 }
 
@@ -47,7 +44,7 @@ type NavbarItemProps = {
 };
 
 const NavbarItem = ({ children, visibility }: NavbarItemProps) => {
-  const className = clsx("", {
+  const className = clsx({
     "hidden md:block": visibility === "desktop",
     "block md:hidden": visibility === "mobile",
   });

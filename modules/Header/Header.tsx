@@ -48,7 +48,7 @@ export const Header = () => {
         </Navbar.Group>
 
         <Navbar.NavbarItem visibility="both">
-          <div className="absolute left-1/2 top-5 -translate-x-1/2 transform">
+          <div className="absolute left-1/2 top-3 -translate-x-1/2 transform">
             <Link href="/">(LOGO)</Link>
           </div>
         </Navbar.NavbarItem>
