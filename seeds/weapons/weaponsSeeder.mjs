@@ -68,10 +68,8 @@ const seedWeapons = async () => {
   try {
     const res = await client.query({ query: GET_WEAPONS });
     const data = res.data;
-    // console.log(data);
     for await (const weapon of data.weapon) {
       try {
-        // console.log(`adding ${weapon.name}`);
         await addWeapon(weapon);
       } catch (err) {
         console.log(err);
