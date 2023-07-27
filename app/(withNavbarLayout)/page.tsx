@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <SectionHomeImage />
       <div className="mt-[20rem]">koksu</div>
-      {/* <Separator src="/images/separator-1.jpg" alt="separator test" /> */}
+      <Separator src="/images/separator-2.jpg" alt="" />
       <div className="mt-[20rem]">koksu</div>
       <Footer />
     </main>

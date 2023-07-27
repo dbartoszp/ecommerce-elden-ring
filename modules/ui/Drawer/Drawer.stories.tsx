@@ -14,14 +14,13 @@ type Story = StoryObj<typeof DrawerComponent>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-let isOpen = true;
 
 export const Drawer: Story = {
   render: () => (
     <DrawerComponent
       iconSize={30}
       onClose={() => console.log("koks")}
-      isOpen={isOpen}
+      isOpen={true}
       belowNavbar={false}
     />
   ),

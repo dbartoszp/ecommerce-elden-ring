@@ -7,20 +7,8 @@ type SeparatorProps = {
 
 export function Separator({ src, alt }: SeparatorProps) {
   return (
-    <div className="max-h-80">
-      <Image
-        className="max-h-80"
-        src={src}
-        alt={alt}
-        width={1920}
-        height={640}
-      />
-      {/* <div
-        className="flex w-full items-center py-20"
-        style={{ backgroundImage: `url('${src}')` }}
-      >
-        separator
-      </div> */}
+    <div className="relative h-96 w-full ">
+      <Image layout="fill" objectFit="cover" src={src} alt={alt} />
     </div>
   );
 }

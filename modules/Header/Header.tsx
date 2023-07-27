@@ -1,7 +1,6 @@
 "use client";
 
 import { Navbar } from "@/modules/ui/Navbar/Navbar";
-import { Navbar as NavbarCompound } from "@/modules/ui/Navbar/NavbarCompound";
 import { Drawer } from "@/modules/ui/Drawer/Drawer";
 import React, { useState } from "react";
 import { Link } from "../ui/Button/Link";
@@ -23,8 +22,8 @@ export const Header = () => {
 
   return (
     <header>
-      <NavbarCompound>
-        <NavbarCompound.NavbarItem visibility="mobile">
+      <Navbar>
+        <Navbar.NavbarItem visibility="mobile">
           <Button onClick={onMobileToggleMenu}>
             {isOpenMobileMenu ? (
               <HiXMark size={iconSize} />
@@ -32,56 +31,56 @@ export const Header = () => {
               <HiBars3 size={iconSize} />
             )}
           </Button>
-        </NavbarCompound.NavbarItem>
+        </Navbar.NavbarItem>
 
-        <NavbarCompound.Group>
-          <NavbarCompound.NavbarGroupItem visibility="desktop">
+        <Navbar.Group>
+          <Navbar.NavbarGroupItem visibility="desktop">
             <Link href="/dsd">MELEE</Link>
-          </NavbarCompound.NavbarGroupItem>
+          </Navbar.NavbarGroupItem>
 
-          <NavbarCompound.NavbarGroupItem visibility="desktop">
+          <Navbar.NavbarGroupItem visibility="desktop">
             <Link href="/">SORCERY</Link>
-          </NavbarCompound.NavbarGroupItem>
+          </Navbar.NavbarGroupItem>
 
-          <NavbarCompound.NavbarGroupItem visibility="desktop">
+          <Navbar.NavbarGroupItem visibility="desktop">
             <Link href="/">ALL</Link>
-          </NavbarCompound.NavbarGroupItem>
-        </NavbarCompound.Group>
+          </Navbar.NavbarGroupItem>
+        </Navbar.Group>
 
-        <NavbarCompound.NavbarItem visibility="both">
+        <Navbar.NavbarItem visibility="both">
           <div className="absolute left-1/2 top-5 -translate-x-1/2 transform">
             <Link href="/">(LOGO)</Link>
           </div>
-        </NavbarCompound.NavbarItem>
+        </Navbar.NavbarItem>
 
-        <NavbarCompound.Group>
-          <NavbarCompound.NavbarGroupItem visibility="desktop">
+        <Navbar.Group>
+          <Navbar.NavbarGroupItem visibility="desktop">
             <Link href="/">ABOUT US</Link>
-          </NavbarCompound.NavbarGroupItem>
-          <NavbarCompound.NavbarGroupItem visibility="desktop">
+          </Navbar.NavbarGroupItem>
+          <Navbar.NavbarGroupItem visibility="desktop">
             <input
               className="hidden w-32 rounded-md bg-dark-green px-1 md:block"
               type="text"
               placeholder="Search..."
             />
-          </NavbarCompound.NavbarGroupItem>
-          <NavbarCompound.NavbarGroupItem visibility="mobile">
+          </Navbar.NavbarGroupItem>
+          <Navbar.NavbarGroupItem visibility="mobile">
             <Link href="/">
               <HiMagnifyingGlass size={iconSize} />
             </Link>
-          </NavbarCompound.NavbarGroupItem>
-          <NavbarCompound.NavbarGroupItem visibility="both">
+          </Navbar.NavbarGroupItem>
+          <Navbar.NavbarGroupItem visibility="both">
             <Link href="/">
               <HiShoppingCart size={iconSize} />
             </Link>
-          </NavbarCompound.NavbarGroupItem>
-          <NavbarCompound.NavbarGroupItem visibility="desktop">
+          </Navbar.NavbarGroupItem>
+          <Navbar.NavbarGroupItem visibility="desktop">
             <Link href="/">
               <HiUserCircle size={iconSize} />
             </Link>
-          </NavbarCompound.NavbarGroupItem>
-        </NavbarCompound.Group>
-      </NavbarCompound>
+          </Navbar.NavbarGroupItem>
+        </Navbar.Group>
+      </Navbar>
       <Drawer
         iconSize={iconSize}
         onClose={() => setIsOpenMobileMenu(false)}
