@@ -9,9 +9,12 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "seed-weapons": "node ./seeds/weapons/weaponsSeeder.js"
+    "seed-weapons": "node ./seeds/weapons/weaponsSeeder.mjs"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.17",
+    "@apollo/server": "^4.8.1",
+    "@faker-js/faker": "^8.0.2",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-separator": "^1.0.3",
     "@supabase/supabase-js": "^2.26.0",
@@ -22,6 +25,10 @@
     "clsx": "^2.0.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "faker-js": "^1.0.0",
+    "graphql": "^16.7.1",
+    "graphql-tag": "^2.12.6",
+    "isomorphic-unfetch": "^4.0.2",
     "next": "13.4.10",
     "postcss": "8.4.26",
     "react": "18.2.0",
