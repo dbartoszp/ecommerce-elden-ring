@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core/core.cjs";
 import { faker } from "@faker-js/faker";
 import supabase from "../../services/supabase.mjs";
+import { error } from "console";
 
 const GET_WEAPONS = gql`
   query {
@@ -40,7 +41,7 @@ const addWeapon = async (newWeapon) => {
   try {
     const randomNumber = faker.number.int({ min: 10000, max: 100000 });
 
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("Weapons")
       .insert([
         {
@@ -58,7 +59,7 @@ const addWeapon = async (newWeapon) => {
         },
       ])
       .select();
-    console.log(data);
+    console.log(error);
   } catch (err) {
     console.log(err);
   }
