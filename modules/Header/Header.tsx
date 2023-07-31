@@ -70,14 +70,18 @@ export const Header = () => {
             </Link>
           </Navbar.NavbarGroupItem>
           <Navbar.NavbarGroupItem visibility="both">
-            <Link href="/">
-              <HiShoppingCart size={iconSize} />
-            </Link>
+            <div className="mr-5 md:mr-0">
+              <Link href="/">
+                <HiShoppingCart size={iconSize} />
+              </Link>
+            </div>
           </Navbar.NavbarGroupItem>
           <Navbar.NavbarGroupItem visibility="desktop">
-            <Link href="/">
-              <HiUserCircle size={iconSize} />
-            </Link>
+            <div className="mr-7">
+              <Link href="/">
+                <HiUserCircle size={iconSize} />
+              </Link>
+            </div>
           </Navbar.NavbarGroupItem>
         </Navbar.Group>
       </Navbar>

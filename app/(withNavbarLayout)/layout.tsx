@@ -1,8 +1,8 @@
-import { Navbar } from "@/modules/ui/Navbar/Navbar";
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import { Header } from "@/modules/Header/Header";
+import { ReactQueryProvider } from "../ReactQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ weight: "300", subsets: ["cyrillic"] });
@@ -20,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <Header />
-        {children}
+        <ReactQueryProvider>
+          <Header />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );
