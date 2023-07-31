@@ -10,13 +10,25 @@ export const getWeapons = async () => {
   return data;
 };
 
+export const getWeaponsByIds = async (ids: number[]) => {
+  const { data, error } = await supabase
+    .from("Weapons")
+    .select("*")
+    .in("id", ids);
+  // console.log("getWeaponsByIds data:", data);
+  if (error) {
+    throw new Error("weapons couldnt be loaded");
+  }
+  return data;
+};
+
 export const getWeaponById = async (id: number) => {
   const { data, error } = await supabase
     .from("Weapons")
     .select("*")
     .eq("id", id);
   const weapon = useGetWeaponByIdReturnSchema.safeParse(data);
-
+  // console.log("weapon:", weapon.data[0]);
   if (error) {
     console.error(error);
     throw new Error("weapon couldnt be loaded");
