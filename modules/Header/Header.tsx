@@ -78,7 +78,7 @@ export const Header = () => {
           </Navbar.NavbarGroupItem>
           <Navbar.NavbarGroupItem visibility="desktop">
             <div className="mr-7">
-              <Link href="/">
+              <Link href="/account">
                 <HiUserCircle size={iconSize} />
               </Link>
             </div>

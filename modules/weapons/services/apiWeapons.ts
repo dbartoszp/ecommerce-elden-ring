@@ -1,5 +1,6 @@
 import supabase from "../../../services/supabase.mjs";
 import { useGetWeaponByIdReturnSchema } from "../hooks/useGetWeaponById/useGetWeaponById.schema";
+import { useGetWeaponsByIdsReturnSchema } from "../hooks/useGetWeaponsByIds/useGetWeaponsByIds.schema";
 
 export const getWeapons = async () => {
   const { data, error } = await supabase.from("Weapons").select("*");
@@ -15,11 +16,16 @@ export const getWeaponsByIds = async (ids: number[]) => {
     .from("Weapons")
     .select("*")
     .in("id", ids);
+  const weapons = useGetWeaponsByIdsReturnSchema.safeParse(data);
   // console.log("getWeaponsByIds data:", data);
   if (error) {
+    console.error(error);
     throw new Error("weapons couldnt be loaded");
   }
-  return data;
+  if (weapons.success) {
+    return weapons.data;
+  }
+  throw weapons.error;
 };
 
 export const getWeaponById = async (id: number) => {
@@ -36,7 +42,7 @@ export const getWeaponById = async (id: number) => {
   if (weapon.success) {
     return weapon.data;
   }
-  throw weapon.error.issues;
+  throw weapon.error;
 };
 
 export const getWeaponByName = async (name: string) => {

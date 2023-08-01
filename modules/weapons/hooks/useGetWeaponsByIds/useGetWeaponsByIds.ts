@@ -6,6 +6,6 @@ export const useGetWeaponsByIds = (ids: number[]) => {
     queryKey: ["Weapons", ids],
     queryFn: () => getWeaponsByIds(ids),
     refetchOnWindowFocus: true,
-    staleTime: 60000,
+    cacheTime: Infinity,
   });
 };

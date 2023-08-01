@@ -55,17 +55,23 @@ export function Drawer({
               className="mx-4 border-b border-elden-beige pb-1 pl-8"
               key={category}
             >
-              <DrawerItem iconSize={iconSize} category={category} />
+              <DrawerItem
+                iconSize={iconSize}
+                category={category}
+                href={category}
+              />
             </li>
           ))}
-          {testingMisc?.map((misc) => (
-            <li
-              className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize"
-              key={misc}
-            >
-              <DrawerItem iconSize={iconSize} category={misc} />
-            </li>
-          ))}
+          <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
+            <DrawerItem
+              iconSize={iconSize}
+              category="Account"
+              href="/account"
+            />
+          </li>
+          <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
+            <DrawerItem iconSize={iconSize} category="About" href="/" />
+          </li>
         </ul>
       </section>
     </main>

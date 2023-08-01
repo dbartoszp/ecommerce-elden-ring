@@ -5,6 +5,7 @@ import "keen-slider/keen-slider.min.css";
 import { useGetWeaponsByIds } from "@/modules/weapons/hooks/useGetWeaponsByIds/useGetWeaponsByIds";
 import { Spinner } from "@/modules/ui/Spinner/Spinner";
 import { useEffect } from "react";
+import { ZodError } from "zod";
 
 type FavoritesTabProps = {
   weaponIds: number[];
@@ -12,27 +13,6 @@ type FavoritesTabProps = {
 
 export function FavoritesTab({ weaponIds }: FavoritesTabProps) {
   const weapons = useGetWeaponsByIds(weaponIds);
-  // console.log(weapons.data);
-
-  // const [sliderRef] = useKeenSlider<HTMLDivElement>(
-  //   {
-  //     breakpoints: {
-  //       "(min-width:640px)": {
-  //         slides: {
-  //           perView: 2,
-  //           spacing: 15,
-  //         },
-  //       },
-  //       "(min-width:768px)": {
-  //         slides: {
-  //           perView: 3,
-  //           spacing: 0,
-  //         },
-  //       },
-  //     },
-  //   },
-  //   [],
-  // );
 
   //todo spinner styling
   if (weapons.isLoading || weapons.isFetching || !weapons.data)
@@ -40,6 +20,10 @@ export function FavoritesTab({ weaponIds }: FavoritesTabProps) {
 
   if (weapons.error && weapons.isError) {
     console.log(weapons.error);
+    if (weapons.error instanceof ZodError) {
+      console.log(weapons.error);
+    }
+
     return weapons.error.at(0).message;
   }
 

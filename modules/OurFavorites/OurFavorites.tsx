@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FavoritesTab } from "./FavoritesTab/FavoritesTab";
 import { Button } from "../ui/Button/Button";
 import clsx from "clsx";
-import { useKeenSlider } from "keen-slider/react";
+import { KeenSliderPlugin, useKeenSlider } from "keen-slider/react";
 
 const tabs = [
   {
@@ -19,6 +19,18 @@ const tabs = [
     ids: [225, 226, 227],
   },
 ];
+
+const ResizePlugin: KeenSliderPlugin = (slider) => {
+  const observer = new ResizeObserver(function () {
+    slider.update();
+  });
+  slider.on("created", () => {
+    observer.observe(slider.container);
+  });
+  slider.on("destroyed", () => {
+    observer.unobserve(slider.container);
+  });
+};
 
 export function OurFavorites() {
   const [tab, setTab] = useState(1);
@@ -40,7 +52,8 @@ export function OurFavorites() {
         },
       },
     },
-    [],
+
+    [ResizePlugin],
   );
 
   const handleTabChange = (tabIndex: number) => {

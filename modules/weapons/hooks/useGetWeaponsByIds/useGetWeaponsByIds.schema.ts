@@ -1,8 +1,9 @@
 import { z } from "zod";
 
-export const useGetWeaponByIdReturnSchema = z.array(
+export const useGetWeaponsByIdsReturnSchema = z.array(
   z.object({
-    category: z.string().min(50, "error"),
+    id: z.number(),
+    category: z.string(),
     name: z.string(),
     weight: z.number(),
     image: z.string(),
