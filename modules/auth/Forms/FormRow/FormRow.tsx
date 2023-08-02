@@ -1,3 +1,5 @@
+import { FieldError } from "react-hook-form";
+
 type FormRowProps = {
   label?: string;
   children: React.ReactNode;

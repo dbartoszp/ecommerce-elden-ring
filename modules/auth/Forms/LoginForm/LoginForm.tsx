@@ -1,12 +1,15 @@
 import { FormEvent, useState } from "react";
 import { FormRow } from "../FormRow/FormRow";
-import { Button } from "../../Button/Button";
+import { Button } from "../../../ui/Button/Button";
 import { useLogin } from "@/modules/users/hooks/useLogin";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export function LoginForm() {
   const [email, setEmail] = useState("drabik@zmitac.com");
   const [password, setPassword] = useState("Mikro123");
   const login = useLogin();
+
+  const supabase = createClientComponentClient();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

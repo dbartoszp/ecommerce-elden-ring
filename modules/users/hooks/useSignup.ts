@@ -1,25 +1,25 @@
 import { useMutation } from "@tanstack/react-query";
-import { login } from "../services/apiAuth";
-import { toast } from "react-hot-toast";
+import { signup } from "../services/apiAuth";
 import { useRouter } from "next/navigation";
 
-type User = {
+type UserSignup = {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 };
 
-export const useLogin = () => {
+export const useSignup = () => {
   const router = useRouter();
 
   return useMutation({
-    mutationFn: (user: User) => login(user),
+    mutationFn: (user: UserSignup) => signup(user),
     onSuccess: (user) => {
       console.log(user);
-      router.push("/");
+      router.push("/account");
     },
     onError: (err) => {
       console.log("ERROR", err);
-      toast.error("Provided credentials are incorrect");
     },
   });
 };

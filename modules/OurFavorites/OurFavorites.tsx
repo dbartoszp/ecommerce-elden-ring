@@ -4,6 +4,7 @@ import { FavoritesTab } from "./FavoritesTab/FavoritesTab";
 import { Button } from "../ui/Button/Button";
 import clsx from "clsx";
 import { KeenSliderPlugin, useKeenSlider } from "keen-slider/react";
+import { FavoritesItemSkeleton } from "./FavoritesItem.tsx/FavoritesItemSkeleton";
 
 const tabs = [
   {

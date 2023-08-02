@@ -63,11 +63,7 @@ export function Drawer({
             </li>
           ))}
           <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
-            <DrawerItem
-              iconSize={iconSize}
-              category="Account"
-              href="/account"
-            />
+            <DrawerItem iconSize={iconSize} category="Account" href="/login" />
           </li>
           <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
             <DrawerItem iconSize={iconSize} category="About" href="/" />

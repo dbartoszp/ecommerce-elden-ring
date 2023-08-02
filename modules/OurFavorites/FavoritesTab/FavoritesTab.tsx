@@ -1,11 +1,9 @@
 "use client";
 import { FavoritesItem } from "../FavoritesItem.tsx/FavoritesItem";
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useGetWeaponsByIds } from "@/modules/weapons/hooks/useGetWeaponsByIds/useGetWeaponsByIds";
-import { Spinner } from "@/modules/ui/Spinner/Spinner";
-import { useEffect } from "react";
-import { ZodError } from "zod";
+import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
+import { FavoritesItemSkeleton } from "../FavoritesItem.tsx/FavoritesItemSkeleton";
 
 type FavoritesTabProps = {
   weaponIds: number[];
@@ -16,13 +14,12 @@ export function FavoritesTab({ weaponIds }: FavoritesTabProps) {
 
   //todo spinner styling
   if (weapons.isLoading || weapons.isFetching || !weapons.data)
-    return <Spinner />;
+    return <FavoritesItemSkeleton items={1} />;
 
   if (weapons.error && weapons.isError) {
     console.log(weapons.error);
-    if (weapons.error instanceof ZodError) {
-      console.log(weapons.error);
-    }
+
+    isZodError(weapons.error);
 
     return weapons.error.at(0).message;
   }
