@@ -16,6 +16,7 @@ export const useSignup = () => {
     mutationFn: (user: UserSignup) => signup(user),
     onSuccess: (user) => {
       console.log(user);
+      router.refresh();
       router.push("/account");
     },
     onError: (err) => {

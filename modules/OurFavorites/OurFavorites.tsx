@@ -4,7 +4,6 @@ import { FavoritesTab } from "./FavoritesTab/FavoritesTab";
 import { Button } from "../ui/Button/Button";
 import clsx from "clsx";
 import { KeenSliderPlugin, useKeenSlider } from "keen-slider/react";
-import { FavoritesItemSkeleton } from "./FavoritesItem.tsx/FavoritesItemSkeleton";
 
 const tabs = [
   {
@@ -66,7 +65,7 @@ export function OurFavorites() {
   };
 
   return (
-    <div className="mt-40 flex flex-col justify-center space-y-4">
+    <div className="mb-20 mt-40 flex flex-col justify-center space-y-4">
       <div className="text-center">
         <h2 className="mx-8 mb-4 bg-light-green p-4 text-3xl font-semibold tracking-wider text-elden-beige md:mx-72">
           Make your enemies...

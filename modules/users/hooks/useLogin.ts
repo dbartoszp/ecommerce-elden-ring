@@ -14,7 +14,8 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: (user: User) => login(user),
     onSuccess: (user) => {
-      console.log(user);
+      // console.log(user);
+      router.refresh();
       router.push("/");
     },
     onError: (err) => {

@@ -2,6 +2,8 @@ import clsx from "clsx";
 import { HiXMark } from "react-icons/hi2";
 import { DrawerItem } from "./DrawerItem/DrawerItem";
 import { Button } from "../Button/Button";
+import { useRouter } from "next/navigation";
+import { useRouteChanged } from "@/modules/navigation/hooks/useRouteChanged";
 
 type DrawerProps = {
   isOpen: boolean;
@@ -27,6 +29,8 @@ export function Drawer({
   iconSize,
   belowNavbar = false,
 }: DrawerProps) {
+  useRouteChanged(() => onClose());
+
   return (
     <main
       className={
@@ -63,7 +67,11 @@ export function Drawer({
             </li>
           ))}
           <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
-            <DrawerItem iconSize={iconSize} category="Account" href="/login" />
+            <DrawerItem
+              iconSize={iconSize}
+              category="Account"
+              href="/account"
+            />
           </li>
           <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
             <DrawerItem iconSize={iconSize} category="About" href="/" />
