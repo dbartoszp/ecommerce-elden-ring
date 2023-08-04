@@ -9,7 +9,7 @@ export function LoginForm() {
   const [password, setPassword] = useState("Mikro123");
   const login = useLogin();
 
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

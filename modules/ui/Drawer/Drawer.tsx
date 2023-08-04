@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { HiXMark } from "react-icons/hi2";
 import { DrawerItem } from "./DrawerItem/DrawerItem";
-import { Button } from "../Button/Button";
-import { useRouter } from "next/navigation";
 import { useRouteChanged } from "@/modules/navigation/hooks/useRouteChanged";
+import { useGetWeaponCategories } from "@/modules/weapons/hooks/useGetWeaponCategories/useGetWeaponCategories";
+import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
 
 type DrawerProps = {
   isOpen: boolean;
@@ -12,17 +12,6 @@ type DrawerProps = {
   belowNavbar: boolean;
 };
 
-const testingCategories = [
-  "Swords",
-  "Shields",
-  "Sorcery",
-  "Fists",
-  "Halberds",
-  "Bows",
-];
-
-const testingMisc = ["Account", "Help"];
-
 export function Drawer({
   isOpen,
   onClose,
@@ -30,6 +19,18 @@ export function Drawer({
   belowNavbar = false,
 }: DrawerProps) {
   useRouteChanged(() => onClose());
+
+  const categories = useGetWeaponCategories();
+  if (categories.isLoading || categories.isFetching || !categories.data)
+    console.log(categories.error);
+
+  if (categories.error && categories.isError) {
+    console.log(categories.error);
+
+    if (isZodError(categories.error)) return "There is a problem with Zod";
+
+    return categories.error.at(0).message;
+  }
 
   return (
     <main
@@ -54,15 +55,15 @@ export function Drawer({
         ) : null}
 
         <ul className="mt-8 flex flex-col  space-y-8 uppercase ">
-          {testingCategories?.map((category) => (
+          {categories.data?.map((category) => (
             <li
               className="mx-4 border-b border-elden-beige pb-1 pl-8"
-              key={category}
+              key={category.category}
             >
               <DrawerItem
                 iconSize={iconSize}
-                category={category}
-                href={category}
+                category={category.category}
+                href={category.category}
               />
             </li>
           ))}

@@ -12,14 +12,13 @@ type FavoritesTabProps = {
 export function FavoritesTab({ weaponIds }: FavoritesTabProps) {
   const weapons = useGetWeaponsByIds(weaponIds);
 
-  //todo spinner styling
   if (weapons.isLoading || weapons.isFetching || !weapons.data)
     return <FavoritesItemSkeleton items={1} />;
 
   if (weapons.error && weapons.isError) {
     console.log(weapons.error);
 
-    isZodError(weapons.error);
+    if (isZodError(weapons.error)) return "There is a problem with Zod";
 
     return weapons.error.at(0).message;
   }

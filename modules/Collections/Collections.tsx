@@ -5,6 +5,8 @@ import { CollectionsItem } from "./CollectionsItem/CollectionsItem";
 import { useState } from "react";
 import { Arrow } from "./CollectionsItem/Arrow/Arrow";
 import clsx from "clsx";
+import { useGetWeaponCategories } from "../weapons/hooks/useGetWeaponCategories/useGetWeaponCategories";
+import { isZodError } from "../errors/type-guards/zod/isZodError";
 
 const collectionsTest = [
   {

@@ -57,7 +57,7 @@ export function RegisterForm() {
             })}
           />
           {errors.firstName?.message && (
-            <span className="text-lg text-red-700">
+            <span className="text-lg font-semibold text-red-700">
               Please provide a valid first name
             </span>
           )}
@@ -72,7 +72,7 @@ export function RegisterForm() {
             })}
           />
           {errors.lastName?.message && (
-            <span className="text-lg text-red-700">
+            <span className="text-lg font-semibold text-red-700">
               Please provide a valid last name
             </span>
           )}
@@ -85,7 +85,7 @@ export function RegisterForm() {
             {...register("emailSignup", { required: true })}
           />
           {errors.emailSignup?.message && (
-            <span className="text-lg text-red-700">
+            <span className="text-lg font-semibold text-red-700">
               Please provide a valid email address
             </span>
           )}
@@ -100,7 +100,7 @@ export function RegisterForm() {
             })}
           />
           {errors.passwordSignup?.message && (
-            <span className="text-lg text-red-700">
+            <span className="text-lg font-semibold text-red-700">
               Password needs to be at least 8 characters long
             </span>
           )}
@@ -115,7 +115,7 @@ export function RegisterForm() {
             })}
           />
           {errors.passwordConfirm?.message && (
-            <span className="text-lg text-red-700">
+            <span className="text-lg font-semibold text-red-700">
               Passwords need to match
             </span>
           )}

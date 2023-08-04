@@ -9,7 +9,6 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      console.log("logged out");
       router.refresh();
       queryClient.removeQueries();
       router.push("/login");
