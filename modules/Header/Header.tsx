@@ -2,7 +2,7 @@
 
 import { Navbar } from "@/modules/ui/Navbar/Navbar";
 import { Drawer } from "@/modules/ui/Drawer/Drawer";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "../ui/Button/Link";
 import { Button } from "../ui/Button/Button";
 import {
@@ -12,14 +12,15 @@ import {
   HiUserCircle,
   HiXMark,
 } from "react-icons/hi2";
+import clsx from "clsx";
 
 const iconSize = 30;
 
 export const Header = () => {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
+
   const onMobileToggleMenu = () =>
     setIsOpenMobileMenu((prevState) => !prevState);
-
   return (
     <header>
       <Navbar>
@@ -70,14 +71,18 @@ export const Header = () => {
             </Link>
           </Navbar.NavbarGroupItem>
           <Navbar.NavbarGroupItem visibility="both">
-            <Link href="/">
-              <HiShoppingCart size={iconSize} />
-            </Link>
+            <div className="mr-5 md:mr-0">
+              <Link href="/">
+                <HiShoppingCart size={iconSize} />
+              </Link>
+            </div>
           </Navbar.NavbarGroupItem>
           <Navbar.NavbarGroupItem visibility="desktop">
-            <Link href="/">
-              <HiUserCircle size={iconSize} />
-            </Link>
+            <div className="mr-7">
+              <Link href="/account">
+                <HiUserCircle size={iconSize} />
+              </Link>
+            </div>
           </Navbar.NavbarGroupItem>
         </Navbar.Group>
       </Navbar>

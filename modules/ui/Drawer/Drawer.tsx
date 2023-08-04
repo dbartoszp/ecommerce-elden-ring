@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import { HiXMark } from "react-icons/hi2";
 import { DrawerItem } from "./DrawerItem/DrawerItem";
-import { Button } from "../Button/Button";
+import { useRouteChanged } from "@/modules/navigation/hooks/useRouteChanged";
+import { useGetWeaponCategories } from "@/modules/weapons/hooks/useGetWeaponCategories/useGetWeaponCategories";
+import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
 
 type DrawerProps = {
   isOpen: boolean;
@@ -10,23 +12,22 @@ type DrawerProps = {
   belowNavbar: boolean;
 };
 
-const testingCategories = [
-  "Swords",
-  "Shields",
-  "Sorcery",
-  "Fists",
-  "Halberds",
-  "Bows",
-];
-
-const testingMisc = ["Account", "Help"];
-
 export function Drawer({
   isOpen,
   onClose,
   iconSize,
   belowNavbar = false,
 }: DrawerProps) {
+  useRouteChanged(() => onClose());
+
+  const categories = useGetWeaponCategories();
+  if (categories.isLoading || categories.isFetching || !categories.data)
+    console.log(categories.error);
+
+  if (categories.error && categories.isError && isZodError(categories.error)) {
+    return <span>{categories.error?.errors?.at(0)?.message}</span>;
+  }
+
   return (
     <main
       className={
@@ -50,22 +51,28 @@ export function Drawer({
         ) : null}
 
         <ul className="mt-8 flex flex-col  space-y-8 uppercase ">
-          {testingCategories?.map((category) => (
+          {categories.data?.map((category) => (
             <li
               className="mx-4 border-b border-elden-beige pb-1 pl-8"
-              key={category}
+              key={category.category}
             >
-              <DrawerItem iconSize={iconSize} category={category} />
+              <DrawerItem
+                iconSize={iconSize}
+                category={category.category}
+                href={category.category}
+              />
             </li>
           ))}
-          {testingMisc?.map((misc) => (
-            <li
-              className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize"
-              key={misc}
-            >
-              <DrawerItem iconSize={iconSize} category={misc} />
-            </li>
-          ))}
+          <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
+            <DrawerItem
+              iconSize={iconSize}
+              category="Account"
+              href="/account"
+            />
+          </li>
+          <li className="mx-4 border-b border-elden-beige pb-1 pl-8 capitalize">
+            <DrawerItem iconSize={iconSize} category="About" href="/" />
+          </li>
         </ul>
       </section>
     </main>

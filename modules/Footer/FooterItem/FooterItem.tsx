@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 type FooterItemProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function FooterItem({ children }: FooterItemProps) {
