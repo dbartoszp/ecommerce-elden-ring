@@ -5,21 +5,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useSignup } from "@/modules/users/hooks/useSignup";
+import { RegisterFormSchema } from "./RegisterForm.schema";
 
-const schema = z
-  .object({
-    firstName: z.string().regex(/^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$/),
-    lastName: z.string().regex(/^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$/),
-    emailSignup: z.string().email(),
-    passwordSignup: z.string().min(8),
-    passwordConfirm: z.string().min(8),
-  })
-  .refine((data) => data.passwordSignup === data.passwordConfirm, {
-    message: "Passwords need to match",
-    path: ["passwordConfirm"],
-  });
-
-type FormValues = z.infer<typeof schema>;
+type FormValues = z.infer<typeof RegisterFormSchema>;
 
 export function RegisterForm() {
   const signup = useSignup();
@@ -28,7 +16,7 @@ export function RegisterForm() {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({ resolver: zodResolver(schema) });
+  } = useForm<FormValues>({ resolver: zodResolver(RegisterFormSchema) });
 
   const onSubmit = handleSubmit(
     ({ firstName, lastName, passwordSignup, emailSignup }) => {
@@ -47,7 +35,7 @@ export function RegisterForm() {
         ...OR CREATE AN ACCOUNT
       </span>
       <form onSubmit={onSubmit} className="px-4 py-9">
-        <FormRow label="FIRST NAME">
+        <FormRow id="firstName" label="FIRST NAME">
           <input
             type="text"
             id="firstName"
@@ -62,7 +50,7 @@ export function RegisterForm() {
             </span>
           )}
         </FormRow>
-        <FormRow label="LAST NAME">
+        <FormRow id="lastName" label="LAST NAME">
           <input
             type="text"
             id="lastName"
@@ -77,7 +65,7 @@ export function RegisterForm() {
             </span>
           )}
         </FormRow>
-        <FormRow label="EMAIL">
+        <FormRow id="emailSignup" label="EMAIL">
           <input
             type="email"
             id="emailSignup"
@@ -90,7 +78,7 @@ export function RegisterForm() {
             </span>
           )}
         </FormRow>
-        <FormRow label="PASSWORD (min 8 characters)">
+        <FormRow id="passwordSignup" label="PASSWORD (min 8 characters)">
           <input
             type="password"
             id="passwordSignup"
@@ -105,7 +93,7 @@ export function RegisterForm() {
             </span>
           )}
         </FormRow>
-        <FormRow label="CONFIRM PASSWORD">
+        <FormRow id="passwordConfirm" label="CONFIRM PASSWORD">
           <input
             type="password"
             id="passwordConfirm"

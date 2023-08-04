@@ -2,11 +2,9 @@
 
 import { useKeenSlider } from "keen-slider/react";
 import { CollectionsItem } from "./CollectionsItem/CollectionsItem";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { Arrow } from "./CollectionsItem/Arrow/Arrow";
 import clsx from "clsx";
-import { useGetWeaponCategories } from "../weapons/hooks/useGetWeaponCategories/useGetWeaponCategories";
-import { isZodError } from "../errors/type-guards/zod/isZodError";
 
 const collectionsTest = [
   {
@@ -25,11 +23,13 @@ export const Collections = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
-  const handlePrevSlide = (e: any) => {
-    e.stopPropagation() || instanceRef.current?.prev();
+  const handlePrevSlide = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    instanceRef.current?.prev();
   };
-  const handleNextSlide = (e: any) => {
-    e.stopPropagation() || instanceRef.current?.next();
+  const handleNextSlide = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    instanceRef.current?.next();
   };
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -111,9 +111,7 @@ export const Collections = () => {
                       "bg-light-green-lighter": currentSlide !== idx,
                     },
                   )}
-                >
-                  {/* &bull; */}
-                </button>
+                ></button>
               );
             })}
           </div>

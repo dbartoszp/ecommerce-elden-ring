@@ -1,10 +1,11 @@
 import clsx from "clsx";
+import { MouseEvent } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
 type ArrowProps = {
   disabled: boolean;
   left?: boolean;
-  onClick: (e: any) => void;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const Arrow = (props: ArrowProps) => {

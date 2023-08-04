@@ -61,7 +61,6 @@ export function OurFavorites() {
       setTab(tabIndex);
       slider?.current?.update();
     }
-    // console.log("current tab:", tabIndex);
   };
 
   return (
@@ -91,16 +90,6 @@ export function OurFavorites() {
         <div className="keen-slider" ref={sliderRef}>
           <FavoritesTab weaponIds={tabs[tab].ids} />
         </div>
-        {/* 
-        <div className={clsx("keen-slider", { "hidden ": tab !== 0 })}>
-          <FavoritesTab weaponIds={tabs[0].ids} />
-        </div>
-        <div className={clsx("keen-slider", { "hidden ": tab !== 1 })}>
-          <FavoritesTab weaponIds={tabs[1].ids} />
-        </div>
-        <div className={clsx("keen-slider", { "hidden ": tab !== 2 })}>
-          <FavoritesTab weaponIds={tabs[2].ids} />
-        </div> */}
       </div>
     </div>
   );

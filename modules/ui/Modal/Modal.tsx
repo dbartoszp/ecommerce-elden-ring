@@ -1,6 +1,6 @@
 "use client";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { Button } from "../Button/Button";
 import { HiXMark } from "react-icons/hi2";
 

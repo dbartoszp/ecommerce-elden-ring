@@ -15,12 +15,8 @@ export function FavoritesTab({ weaponIds }: FavoritesTabProps) {
   if (weapons.isLoading || weapons.isFetching || !weapons.data)
     return <FavoritesItemSkeleton items={1} />;
 
-  if (weapons.error && weapons.isError) {
-    console.log(weapons.error);
-
-    if (isZodError(weapons.error)) return "There is a problem with Zod";
-
-    return weapons.error.at(0).message;
+  if (weapons.error && weapons.isError && isZodError(weapons.error)) {
+    return <span>{weapons.error?.errors?.at(0)?.message}</span>;
   }
 
   return weapons.data.map((weapon) => {

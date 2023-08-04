@@ -24,12 +24,8 @@ export function Drawer({
   if (categories.isLoading || categories.isFetching || !categories.data)
     console.log(categories.error);
 
-  if (categories.error && categories.isError) {
-    console.log(categories.error);
-
-    if (isZodError(categories.error)) return "There is a problem with Zod";
-
-    return categories.error.at(0).message;
+  if (categories.error && categories.isError && isZodError(categories.error)) {
+    return <span>{categories.error?.errors?.at(0)?.message}</span>;
   }
 
   return (

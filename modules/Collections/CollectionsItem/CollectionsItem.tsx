@@ -1,4 +1,3 @@
-import { Button } from "@/modules/ui/Button/Button";
 import { Modal } from "@/modules/ui/Modal/Modal";
 import Image from "next/image";
 import { CollectionsModalItem } from "./CollectionsModalItem/CollectionsModalItem";
@@ -20,12 +19,8 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
 
   if (weapons.isLoading || weapons.isFetching || !weapons.data) return null;
 
-  if (weapons.error && weapons.isError) {
-    console.log(weapons.error);
-
-    if (isZodError(weapons.error)) return "There is a problem with Zod";
-
-    return weapons.error.at(0).message;
+  if (weapons.error && weapons.isError && isZodError(weapons.error)) {
+    return <span>{weapons.error?.errors?.at(0)?.message}</span>;
   }
 
   return (
