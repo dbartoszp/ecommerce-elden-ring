@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getWeaponsByIds } from "../../services/apiWeapons";
+import { getWeaponsByIds } from "../apiUseGetWeaponsByIds";
 
 export const useGetWeaponsByIds = (ids: number[]) => {
   return useQuery({

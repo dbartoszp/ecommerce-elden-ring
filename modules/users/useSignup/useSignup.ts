@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { signup } from "../services/apiAuth";
 import { useRouter } from "next/navigation";
+import { signup } from "./apiUseSignup";
 
 type UserSignup = {
   firstName: string;

@@ -7,5 +7,6 @@ export const useGetWeaponsByIdsReturnSchema = z.array(
     name: z.string(),
     weight: z.number(),
     image: z.string(),
+    price: z.number(),
   }),
 );

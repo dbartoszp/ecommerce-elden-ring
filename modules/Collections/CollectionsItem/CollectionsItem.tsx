@@ -1,8 +1,8 @@
 import { Modal } from "@/modules/ui/Modal/Modal";
 import Image from "next/image";
 import { CollectionsModalItem } from "./CollectionsModalItem/CollectionsModalItem";
-import { useGetWeaponsByIds } from "@/modules/weapons/hooks/useGetWeaponsByIds/useGetWeaponsByIds";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
+import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 
 type Collection = {
   title: string;
@@ -26,7 +26,7 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
   return (
     <div className="flex h-full  items-center justify-center">
       <Image
-        className="h-full  w-96 object-cover"
+        className="h-full  w-80 object-cover"
         src={collection.image}
         width={400}
         height={400}
@@ -43,7 +43,6 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
               <CollectionsModalItem weapon={weapon} />
             </div>
           ))}
-          {/* <CollectionsModalItem /> */}
         </Modal>
       </div>
     </div>

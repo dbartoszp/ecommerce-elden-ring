@@ -1,5 +1,5 @@
 "use client";
-import { useLogout } from "@/modules/users/hooks/useLogout";
+import { useLogout } from "@/modules/users/useLogout/useLogout";
 import { Button } from "../../ui/Button/Button";
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
 

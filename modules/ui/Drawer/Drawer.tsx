@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { HiXMark } from "react-icons/hi2";
 import { DrawerItem } from "./DrawerItem/DrawerItem";
 import { useRouteChanged } from "@/modules/navigation/hooks/useRouteChanged";
-import { useGetWeaponCategories } from "@/modules/weapons/hooks/useGetWeaponCategories/useGetWeaponCategories";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
+import { useGetWeaponCategories } from "@/modules/weapons/useGetWeaponCategories/hooks/useGetWeaponCategories";
 
 type DrawerProps = {
   isOpen: boolean;

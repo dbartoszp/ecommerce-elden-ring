@@ -1,9 +1,9 @@
 "use client";
 import { FavoritesItem } from "../FavoritesItem.tsx/FavoritesItem";
 import "keen-slider/keen-slider.min.css";
-import { useGetWeaponsByIds } from "@/modules/weapons/hooks/useGetWeaponsByIds/useGetWeaponsByIds";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
 import { FavoritesItemSkeleton } from "../FavoritesItem.tsx/FavoritesItemSkeleton";
+import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 
 type FavoritesTabProps = {
   weaponIds: number[];

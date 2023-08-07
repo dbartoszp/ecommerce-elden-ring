@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { login } from "../services/apiAuth";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { login } from "./apiUseLogin";
 
 type User = {
   email: string;

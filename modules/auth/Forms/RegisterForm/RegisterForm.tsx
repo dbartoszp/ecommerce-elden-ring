@@ -4,7 +4,7 @@ import { FormRow } from "../FormRow/FormRow";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useSignup } from "@/modules/users/hooks/useSignup";
+import { useSignup } from "@/modules/users/useSignup/useSignup";
 import { RegisterFormSchema } from "./RegisterForm.schema";
 
 type FormValues = z.infer<typeof RegisterFormSchema>;

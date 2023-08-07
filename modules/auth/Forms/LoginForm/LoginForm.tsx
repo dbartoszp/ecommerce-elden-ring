@@ -1,13 +1,9 @@
-import { FormEvent, useState } from "react";
 import { FormRow } from "../FormRow/FormRow";
 import { Button } from "../../../ui/Button/Button";
-import { useLogin } from "@/modules/users/hooks/useLogin";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useLogin } from "@/modules/users/useLogin/useLogin.ts";
 import { useForm } from "react-hook-form";
 
 export function LoginForm() {
-  // const [email, setEmail] = useState("drabik@zmitac.com");
-  // const [password, setPassword] = useState("Mikro123");
   const login = useLogin();
 
   const {
@@ -22,12 +18,6 @@ export function LoginForm() {
       email,
     });
   });
-
-  // const handleSubmit = (e: FormEvent) => {
-  //   e.preventDefault();
-  //   if (!email || !password) return;
-  //   login.mutate({ email, password });
-  // };
 
   return (
     <>
