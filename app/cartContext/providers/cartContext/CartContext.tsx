@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+"use client";
+import { ReactNode, createContext } from "react";
 
 type CartProviderProps = {
   children: ReactNode;

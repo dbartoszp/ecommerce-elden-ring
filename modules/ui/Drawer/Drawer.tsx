@@ -22,7 +22,7 @@ export function Drawer({
 
   const categories = useGetWeaponCategories();
   if (categories.isLoading || categories.isFetching || !categories.data)
-    console.log(categories.error);
+    if (categories.error) console.log(categories.error);
 
   if (categories.error && categories.isError && isZodError(categories.error)) {
     return <span>{categories.error?.errors?.at(0)?.message}</span>;

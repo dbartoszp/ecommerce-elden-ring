@@ -1,5 +1,4 @@
-"use client";
-import { useAddToCart } from "@/app/cartContext/useAddToCart/useAddToCart";
+import { useAddToCart } from "@/app/cartContext/hooks/useAddToCart/useAddToCart";
 import { Button } from "@/modules/ui/Button/Button";
 import Image from "next/image";
 import { HiPlus } from "react-icons/hi2";
@@ -21,7 +20,7 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
   const addToCart = useAddToCart();
 
   const handleAddToCart = () => {
-    addToCart.mutate({ cart_id: 0, weapon_id: weapon.id });
+    addToCart.mutate({ weapon_id: weapon.id });
   };
 
   return (
