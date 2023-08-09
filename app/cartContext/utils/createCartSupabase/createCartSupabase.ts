@@ -10,7 +10,6 @@ export const createCartSupabase = async () => {
     .from("Carts")
     .select("*")
     .eq("user_id", user?.user.id);
-  console.log(data);
   const cart = createCartReturnSchema.safeParse(data);
 
   if (error) {
@@ -30,7 +29,6 @@ export const createCartSupabase = async () => {
     throw new Error("cart couldnt be created");
   }
   if (!newCart.success) {
-    // console.log("Created a new cart:", newCart.data.at(0)?.id);
     throw newCart.error;
   }
   const cartItem = newCart.data.at(0);

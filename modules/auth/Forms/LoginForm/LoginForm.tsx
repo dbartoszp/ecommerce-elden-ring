@@ -1,6 +1,6 @@
 import { FormRow } from "../FormRow/FormRow";
 import { Button } from "../../../ui/Button/Button";
-import { useLogin } from "@/modules/users/useLogin/useLogin.ts";
+import { useLogin } from "@/modules/users/useLogin/useLogin";
 import { useForm } from "react-hook-form";
 
 export function LoginForm() {

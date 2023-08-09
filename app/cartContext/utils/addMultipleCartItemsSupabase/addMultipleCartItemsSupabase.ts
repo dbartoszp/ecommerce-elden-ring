@@ -14,7 +14,7 @@ export const addMultipleCartItemsSupabase = async ({
   const itemIdsToInsert = weapon_ids.map((id) => ({ cart_id, weapon_id: id }));
 
   try {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("CartItems")
       .insert(itemIdsToInsert)
       .select();

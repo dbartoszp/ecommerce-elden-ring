@@ -1,5 +1,5 @@
-// import supabase from "@/services/supabase.mjs";
-
+import { createCartSupabase } from "@/app/cartContext/utils/createCartSupabase/createCartSupabase";
+import { mergeSupabaseLS } from "@/app/cartContext/utils/mergeSupabaseLS/mergeSupabaseLS";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const supabase = createClientComponentClient();
@@ -23,7 +23,8 @@ export const signup = async (user: UserSignup) => {
       },
     },
   });
-
+  const cartId = await createCartSupabase();
+  mergeSupabaseLS({ cart_id: cartId });
   if (error) throw new Error(error.message);
 
   console.log(data);
