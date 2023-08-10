@@ -4,7 +4,7 @@ import { useGetCart } from "@/app/cartContext/hooks/useGetCart/useGetCart";
 import { countWeaponsById } from "@/app/cartContext/utils/countWeaponsById/countWeaponsById";
 import { Button } from "@/modules/ui/Button/Button";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 
 type CartWeapon = {
@@ -29,19 +29,18 @@ type CollectionsModalItemProps = {
 export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
   const addToCart = useAddToCart();
   const deleteFromCart = useDeleteFromCart();
-  const cartWeapons = useGetCart().data || [];
-  const weaponsIds = cartWeapons.map(
-    (cartWeapon: CartWeapon) => cartWeapon.weapon_id,
-  );
-  const [count, setCount] = useState(
-    countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }),
-  );
+  const cartWeapons = useGetCart();
 
-  console.log("count:", count);
-  console.log(
-    "countWeaponsById:",
-    countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }),
-  );
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (cartWeapons.isSuccess) {
+      const weaponsIds = cartWeapons.data.map(
+        (cartWeapon: CartWeapon) => cartWeapon.weapon_id,
+      );
+      setCount(countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }));
+    }
+  }, [cartWeapons.data, cartWeapons.isSuccess, weapon.id]);
 
   const handleAddToCart = () => {
     addToCart.mutate({ weapon_id: weapon.id });

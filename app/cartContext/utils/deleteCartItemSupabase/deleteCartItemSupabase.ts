@@ -1,5 +1,6 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { toast } from "react-hot-toast";
 
 type CartItems = {
   cart_id: number;
@@ -17,6 +18,7 @@ export const deleteCartItemsSupabase = async ({ cart_id, id }: CartItems) => {
 
     if (error) console.log(error);
   } catch (err) {
+    toast.error("Could not delete an item from the cart");
     console.log(err);
   }
 };

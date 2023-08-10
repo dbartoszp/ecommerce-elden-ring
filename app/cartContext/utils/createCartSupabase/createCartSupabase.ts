@@ -6,6 +6,7 @@ const supabase = createClientComponentClient();
 export const createCartSupabase = async () => {
   const user = await getCurrentUser();
 
+  //!! TODO ROZDZIELIC NA 2
   const { data, error } = await supabase
     .from("Carts")
     .select("*")
@@ -19,6 +20,7 @@ export const createCartSupabase = async () => {
   if (cart.success && cart.data.length === 1) {
     return cart.data[0].id;
   }
+  //!! TU DRUGA
   const { data: newCartData, error: newCartError } = await supabase
     .from("Carts")
     .insert([{ user_id: user?.user.id }])

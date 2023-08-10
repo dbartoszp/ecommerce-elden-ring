@@ -10,14 +10,15 @@ type CartWeapon = {
 };
 
 export const CartComponent = () => {
-  const cartWeapons = useGetCart().data || [];
-  const weaponsIds = cartWeapons.map(
+  //!! TO FIX
+  const cartWeapons = useGetCart();
+  const weaponsIds = cartWeapons.data?.map(
     (cartWeapon: CartWeapon) => cartWeapon.weapon_id,
   );
 
-  const weapons = useGetWeaponsByIds(weaponsIds).data || [];
+  const weapons = useGetWeaponsByIds(weaponsIds).data;
 
-  const weaponItems = weapons.map((weapon) => {
+  const weaponItems = weapons?.map((weapon) => {
     return {
       weapon,
       count: countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }),
@@ -27,8 +28,8 @@ export const CartComponent = () => {
   return (
     <div>
       <h1>Your weaponItems:</h1>
-      {weaponItems.map((weaponItem, i) => (
-        <div key={i}>
+      {weaponItems?.map((weaponItem) => (
+        <div key={weaponItem.weapon.id}>
           <span>
             name: {weaponItem.weapon.name} count: {weaponItem.count} total
             price: {(weaponItem.count * weaponItem.weapon.price) / 100}zł

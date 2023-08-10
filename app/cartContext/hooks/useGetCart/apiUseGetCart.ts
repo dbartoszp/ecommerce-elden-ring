@@ -10,7 +10,7 @@ export const getCart = async () => {
       return getCartLS();
     }
     const cartId = await createCartSupabase();
-    return getCartSupabase(cartId);
+    return await getCartSupabase(cartId);
   } catch (err) {
     console.log(err);
   }

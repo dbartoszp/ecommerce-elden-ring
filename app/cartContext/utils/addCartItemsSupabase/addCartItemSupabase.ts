@@ -12,7 +12,7 @@ export const addCartItemSupabase = async ({
 }: CartItems) => {
   const supabase = createClientComponentClient();
   try {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("CartItems")
       .insert([{ cart_id, weapon_id }])
       .select();
