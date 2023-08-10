@@ -9,8 +9,6 @@ type CartWeapon = {
   weapon_id: number;
 };
 
-const testId = 219;
-
 export const CartComponent = () => {
   const cartWeapons = useGetCart().data || [];
   const weaponsIds = cartWeapons.map(
@@ -18,9 +16,6 @@ export const CartComponent = () => {
   );
 
   const weapons = useGetWeaponsByIds(weaponsIds).data || [];
-  console.log(weapons);
-  const testCount = countWeaponsById({ weapons: weaponsIds, weaponId: testId });
-  console.log(`This many weapons with the id ${testId}`, testCount);
 
   const weaponItems = weapons.map((weapon) => {
     return {
@@ -29,20 +24,15 @@ export const CartComponent = () => {
     };
   });
 
-  console.log("weaponItems:", weaponItems);
-  console.log("weaponItems[0]", weaponItems[0]);
-
   return (
     <div>
-      {/* <CartItem weaponItem={weaponItems[0]} /> */}
-      <h1>Your weapons:</h1>
-      {weapons.map((weapon, i) => (
+      <h1>Your weaponItems:</h1>
+      {weaponItems.map((weaponItem, i) => (
         <div key={i}>
           <span>
-            name:{weapon.name} count:{testCount} total:
-            {(weapon.price * testCount) / 100}zł
+            name: {weaponItem.weapon.name} count: {weaponItem.count} total
+            price: {(weaponItem.count * weaponItem.weapon.price) / 100}zł
           </span>
-          {/* <CartItem weapon={weapon} /> */}
         </div>
       ))}
     </div>

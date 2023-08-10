@@ -11,7 +11,7 @@ export const createCartSupabase = async () => {
     .select("*")
     .eq("user_id", user?.user.id);
   const cart = createCartReturnSchema.safeParse(data);
-
+  console.log(cart, data);
   if (error) {
     console.error(error);
     throw new Error("cart couldnt be created");

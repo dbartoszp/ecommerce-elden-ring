@@ -1,7 +1,17 @@
 import { useAddToCart } from "@/app/cartContext/hooks/useAddToCart/useAddToCart";
+import { useDeleteFromCart } from "@/app/cartContext/hooks/useDeleteFromCart/useDeleteFromCart";
+import { useGetCart } from "@/app/cartContext/hooks/useGetCart/useGetCart";
+import { countWeaponsById } from "@/app/cartContext/utils/countWeaponsById/countWeaponsById";
 import { Button } from "@/modules/ui/Button/Button";
 import Image from "next/image";
-import { HiPlus } from "react-icons/hi2";
+import { useState } from "react";
+import { HiMinus, HiPlus } from "react-icons/hi2";
+
+type CartWeapon = {
+  id: number;
+  cart_id: number;
+  weapon_id: number;
+};
 
 type Weapon = {
   id: number;
@@ -18,9 +28,31 @@ type CollectionsModalItemProps = {
 
 export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
   const addToCart = useAddToCart();
+  const deleteFromCart = useDeleteFromCart();
+  const cartWeapons = useGetCart().data || [];
+  const weaponsIds = cartWeapons.map(
+    (cartWeapon: CartWeapon) => cartWeapon.weapon_id,
+  );
+  const [count, setCount] = useState(
+    countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }),
+  );
+
+  console.log("count:", count);
+  console.log(
+    "countWeaponsById:",
+    countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }),
+  );
 
   const handleAddToCart = () => {
     addToCart.mutate({ weapon_id: weapon.id });
+    setCount((c) => c + 1);
+  };
+
+  const handleDeleteFromCart = () => {
+    if (count > 0) {
+      deleteFromCart.mutate({ weapon_id: weapon.id });
+      setCount((c) => c - 1);
+    }
   };
 
   return (
@@ -35,9 +67,15 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
             {weapon.price / 100}zł
           </span>
         </div>
-        <div className="flex">
+        <div className="flex space-x-2">
+          <span className={count > 0 ? "" : "invisible"}>
+            Currently in cart: {count}
+          </span>
           <Button size="md" onClick={handleAddToCart}>
             <HiPlus />
+          </Button>
+          <Button size="md" variant="danger" onClick={handleDeleteFromCart}>
+            <HiMinus />
           </Button>
         </div>
       </div>
