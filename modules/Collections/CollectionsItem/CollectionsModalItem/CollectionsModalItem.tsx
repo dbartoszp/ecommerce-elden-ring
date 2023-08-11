@@ -50,7 +50,7 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
 
   return (
     <>
-      <div className="flex items-center justify-between border-b border-b-dark-green p-1">
+      <div className="flex items-center justify-around border-b border-b-dark-green p-1 md:justify-between">
         <Image src={weapon.image} alt={weapon.name} width={80} height={20} />
         <div className="flex flex-col">
           <span className="ml-5 mt-5 font-semibold text-dark-green">
@@ -60,14 +60,19 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
             {weapon.price / 100}zł
           </span>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 font-semibold">
           <span className={count > 0 ? "" : "invisible"}>
             Currently in cart: {count}
           </span>
           <Button size="md" onClick={handleAddToCart}>
             <HiPlus />
           </Button>
-          <Button size="md" variant="danger" onClick={handleDeleteFromCart}>
+          <Button
+            size="md"
+            variant={count > 0 ? "danger" : "secondary"}
+            onClick={handleDeleteFromCart}
+            disabled={count <= 0}
+          >
             <HiMinus />
           </Button>
         </div>

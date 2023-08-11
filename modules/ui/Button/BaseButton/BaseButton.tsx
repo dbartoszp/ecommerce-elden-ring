@@ -39,12 +39,12 @@ const sizes: Sizes = {
 
 const variants: ClassNames = {
   primary:
-    "rounded-xl bg-light-green hover:bg-light-green-lighter text-elden-beige",
+    "rounded-xl bg-light-green enabled:hover:bg-light-green-lighter text-elden-beige",
   secondary:
-    "rounded-xl hover:bg-light-olive-lighter bg-light-olive text-dark-green",
-  link: "text-elden-beige rounded-xl bg-transparent hover:bg-transparent hover:underline",
+    "rounded-xl enabled:hover:bg-light-olive-lighter bg-light-olive text-dark-green",
+  link: "text-elden-beige rounded-xl bg-transparent enabled:hover:bg-transparent enabled:hover:underline",
   danger:
-    "bg-red-700 text-red-100 hover:bg-red-600 rounded-xl border border-red-50",
+    "bg-red-700 text-red-100 enabled:hover:bg-red-600 rounded-xl border border-red-50",
 };
 export const BaseButton = (props: BaseButtonProps) => {
   const { variant = "primary", size = "md" } = props;

@@ -30,7 +30,7 @@ export const Modal = ({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-dark-green opacity-50" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 w-10/12 -translate-x-1/2 -translate-y-1/2 rounded-md bg-elden-beige px-10 pb-10 pt-4 shadow-md md:w-7/12 lg:w-5/12">
+        <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[80vh] w-11/12 -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-md bg-elden-beige px-10 pb-10 pt-4 shadow-md md:w-7/12 lg:w-5/12">
           <Dialog.Title className="flex w-full justify-between text-2xl font-semibold">
             <span>{title}</span>
             <div>
