@@ -1,4 +1,3 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { addCartItemsLS } from "../../utils/addCartItemsLS/addCartItemsLS";
 import { createCartSupabase } from "../../utils/createCartSupabase/createCartSupabase";
 import { addCartItemSupabase } from "../../utils/addCartItemsSupabase/addCartItemSupabase";

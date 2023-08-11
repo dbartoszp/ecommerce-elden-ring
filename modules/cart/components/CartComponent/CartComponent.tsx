@@ -1,6 +1,6 @@
-import { useGetCart } from "@/app/cartContext/hooks/useGetCart/useGetCart";
 import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 import { countWeaponsById } from "../../utils/countWeaponsById/countWeaponsById";
+import { useGetCart } from "../../hooks/useGetCart/useGetCart";
 
 export const CartComponent = () => {
   const cartWeapons = useGetCart();

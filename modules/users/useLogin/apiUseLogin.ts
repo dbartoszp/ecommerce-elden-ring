@@ -1,5 +1,5 @@
-import { createCartSupabase } from "@/app/cartContext/utils/createCartSupabase/createCartSupabase";
-import { mergeSupabaseLS } from "@/app/cartContext/utils/mergeSupabaseLS/mergeSupabaseLS";
+import { createCartSupabase } from "@/modules/cart/utils/createCartSupabase/createCartSupabase";
+import { mergeSupabaseLS } from "@/modules/cart/utils/mergeSupabaseLS/mergeSupabaseLS";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const supabase = createClientComponentClient();

@@ -4,7 +4,7 @@ import { getCurrentUser } from "@/modules/users/getCurrentUser/getCurrentUser";
 
 export const createNewCart = async () => {
   const user = await getCurrentUser();
-  //!! TU DRUGA
+
   const { data: newCartData, error: newCartError } = await supabase
     .from("Carts")
     .insert([{ userId: user?.user.id }])

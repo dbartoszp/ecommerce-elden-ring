@@ -1,7 +1,7 @@
-import { useAddToCart } from "@/app/cartContext/hooks/useAddToCart/useAddToCart";
-import { useDeleteFromCart } from "@/app/cartContext/hooks/useDeleteFromCart/useDeleteFromCart";
-import { useGetCart } from "@/app/cartContext/hooks/useGetCart/useGetCart";
-import { countWeaponsById } from "@/app/cartContext/utils/countWeaponsById/countWeaponsById";
+import { useAddToCart } from "@/modules/cart/hooks/useAddToCart/useAddToCart";
+import { useDeleteFromCart } from "@/modules/cart/hooks/useDeleteFromCart/useDeleteFromCart";
+import { useGetCart } from "@/modules/cart/hooks/useGetCart/useGetCart";
+import { countWeaponsById } from "@/modules/cart/utils/countWeaponsById/countWeaponsById";
 import { Button } from "@/modules/ui/Button/Button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
