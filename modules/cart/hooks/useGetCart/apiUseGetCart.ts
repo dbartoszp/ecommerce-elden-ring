@@ -5,7 +5,7 @@ import { createCartSupabase } from "../../utils/createCartSupabase/createCartSup
 
 export const getCart = async () => {
   try {
-    const user = await getCurrentUser();
+    const user = getCurrentUser();
     if (!user) {
       return getCartLS();
     }

@@ -10,3 +10,4 @@ export const useGetWeaponsByIdsReturnSchema = z.array(
     price: z.number(),
   }),
 );
+export type Weapon = z.infer<typeof useGetWeaponsByIdsReturnSchema>;

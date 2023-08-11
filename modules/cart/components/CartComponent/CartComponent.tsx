@@ -1,33 +1,20 @@
-import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
-import { countWeaponsById } from "../../utils/countWeaponsById/countWeaponsById";
 import { useGetCart } from "../../hooks/useGetCart/useGetCart";
+import { CartItems } from "./CartItems/CartItems";
 
 export const CartComponent = () => {
   const cartWeapons = useGetCart();
 
-  let weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weaponId);
-  if (!weaponsIds) weaponsIds = [];
+  const weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weaponId);
 
-  const weapons = useGetWeaponsByIds(weaponsIds).data;
-
-  const weaponItems = weapons?.map((weapon) => {
-    return {
-      weapon,
-      count: countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }),
-    };
-  });
+  if (cartWeapons.isLoading) return <span>loading</span>;
+  if (!weaponsIds) return <div>brak</div>;
 
   return (
-    <div>
-      <h1>Your weaponItems:</h1>
-      {weaponItems?.map((weaponItem) => (
-        <div key={weaponItem.weapon.id}>
-          <span>
-            name: {weaponItem.weapon.name} count: {weaponItem.count} total
-            price: {(weaponItem.count * weaponItem.weapon.price) / 100}zł
-          </span>
-        </div>
-      ))}
+    <div className="mx-2 py-12">
+      <div className="mb-2 border-b border-b-dark-green pb-2 text-center text-lg font-semibold uppercase tracking-widest">
+        <h1>Items in your cart:</h1>
+      </div>
+      <CartItems weaponIds={weaponsIds} />
     </div>
   );
 };
