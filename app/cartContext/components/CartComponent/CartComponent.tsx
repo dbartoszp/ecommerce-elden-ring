@@ -1,20 +1,12 @@
 import { useGetCart } from "@/app/cartContext/hooks/useGetCart/useGetCart";
-import { CartItem } from "../CartItem/CartItem";
 import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 import { countWeaponsById } from "../../utils/countWeaponsById/countWeaponsById";
 
-type CartWeapon = {
-  id: number;
-  cart_id: number;
-  weapon_id: number;
-};
-
 export const CartComponent = () => {
-  //!! TO FIX
   const cartWeapons = useGetCart();
-  const weaponsIds = cartWeapons.data?.map(
-    (cartWeapon: CartWeapon) => cartWeapon.weapon_id,
-  );
+
+  let weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weapon_id);
+  if (!weaponsIds) weaponsIds = [];
 
   const weapons = useGetWeaponsByIds(weaponsIds).data;
 

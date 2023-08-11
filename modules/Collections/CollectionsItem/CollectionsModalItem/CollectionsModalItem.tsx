@@ -7,12 +7,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 
-type CartWeapon = {
-  id: number;
-  cart_id: number;
-  weapon_id: number;
-};
-
 type Weapon = {
   id: number;
   name: string;
@@ -34,9 +28,9 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (cartWeapons.isSuccess) {
+    if (cartWeapons.isSuccess && cartWeapons.data) {
       const weaponsIds = cartWeapons.data.map(
-        (cartWeapon: CartWeapon) => cartWeapon.weapon_id,
+        (cartWeapon) => cartWeapon.weapon_id,
       );
       setCount(countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }));
     }

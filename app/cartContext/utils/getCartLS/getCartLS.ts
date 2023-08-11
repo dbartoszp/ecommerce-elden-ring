@@ -1,15 +1,14 @@
 import { getCartLSReturnSchema } from "./getCartLS.schema";
-import * as z from "zod";
-
-const testSchema = z.string();
 
 export const getCartLS = () => {
   const cartItemsLSJSON = localStorage.getItem("cartItems");
+  if (!cartItemsLSJSON) return null;
 
-  console.log("cartItemsLSJSON:", cartItemsLSJSON);
   const zodParsedData = getCartLSReturnSchema.safeParse(
-    testSchema.safeParse(cartItemsLSJSON),
+    JSON.parse(cartItemsLSJSON),
   );
-  console.log(zodParsedData);
-  return zodParsedData;
+  if (zodParsedData.success) {
+    return zodParsedData.data;
+  }
+  throw zodParsedData.error;
 };
