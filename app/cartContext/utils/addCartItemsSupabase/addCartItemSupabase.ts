@@ -2,19 +2,16 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 type CartItems = {
-  cart_id: number;
-  weapon_id: number;
+  cartId: number;
+  weaponId: number;
 };
 
-export const addCartItemSupabase = async ({
-  cart_id,
-  weapon_id,
-}: CartItems) => {
+export const addCartItemSupabase = async ({ cartId, weaponId }: CartItems) => {
   const supabase = createClientComponentClient();
   try {
     const { error } = await supabase
       .from("CartItems")
-      .insert([{ cart_id, weapon_id }])
+      .insert([{ cartId, weaponId }])
       .select();
     if (error) console.log(error);
   } catch (err) {

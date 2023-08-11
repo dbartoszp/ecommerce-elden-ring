@@ -7,10 +7,9 @@ export const createNewCart = async () => {
   //!! TU DRUGA
   const { data: newCartData, error: newCartError } = await supabase
     .from("Carts")
-    .insert([{ user_id: user?.user.id }])
+    .insert([{ userId: user?.user.id }])
     .select();
   const newCart = createCartReturnSchema.safeParse(newCartData);
-  console.log(newCart);
   if (newCartError) {
     console.error(newCartError);
     throw new Error("cart couldnt be created");

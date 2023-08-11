@@ -3,12 +3,12 @@ import { addToCart } from "./apiAddToCart";
 import { toast } from "react-hot-toast";
 
 type CartItem = {
-  weapon_id: number;
+  weaponId: number;
 };
 
 export const useAddToCart = () => {
   return useMutation({
-    mutationFn: ({ weapon_id }: CartItem) => addToCart({ weapon_id }),
+    mutationFn: ({ weaponId }: CartItem) => addToCart({ weaponId }),
     onSuccess: () => {
       toast.success("Item added to the cart");
     },

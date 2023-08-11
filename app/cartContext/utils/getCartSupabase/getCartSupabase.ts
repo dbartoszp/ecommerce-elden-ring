@@ -5,7 +5,7 @@ export const getCartSupabase = async (id: number) => {
   const { data, error } = await supabase
     .from("CartItems")
     .select("*")
-    .eq("cart_id", id);
+    .eq("cartId", id);
   const cart = getCartSupabaseReturnSchema.safeParse(data);
   if (error) {
     console.error(error);

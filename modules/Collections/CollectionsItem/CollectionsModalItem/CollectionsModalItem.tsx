@@ -30,20 +30,20 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
   useEffect(() => {
     if (cartWeapons.isSuccess && cartWeapons.data) {
       const weaponsIds = cartWeapons.data.map(
-        (cartWeapon) => cartWeapon.weapon_id,
+        (cartWeapon) => cartWeapon.weaponId,
       );
       setCount(countWeaponsById({ weapons: weaponsIds, weaponId: weapon.id }));
     }
   }, [cartWeapons.data, cartWeapons.isSuccess, weapon.id]);
 
   const handleAddToCart = () => {
-    addToCart.mutate({ weapon_id: weapon.id });
+    addToCart.mutate({ weaponId: weapon.id });
     setCount((c) => c + 1);
   };
 
   const handleDeleteFromCart = () => {
     if (count > 0) {
-      deleteFromCart.mutate({ weapon_id: weapon.id });
+      deleteFromCart.mutate({ weaponId: weapon.id });
       setCount((c) => c - 1);
     }
   };

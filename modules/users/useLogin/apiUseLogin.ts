@@ -14,7 +14,7 @@ export const login = async (user: UserLogin) => {
     password: user.password,
   });
   const cartId = await createCartSupabase();
-  mergeSupabaseLS({ cart_id: cartId });
+  mergeSupabaseLS({ cartId });
   if (error) throw new Error(error.message);
 
   return data;

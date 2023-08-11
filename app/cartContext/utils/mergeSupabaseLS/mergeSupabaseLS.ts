@@ -1,20 +1,20 @@
 import { addMultipleCartItemsSupabase } from "../addMultipleCartItemsSupabase/addMultipleCartItemsSupabase";
 
 type MergeSupabaseLSParams = {
-  cart_id: number;
+  cartId: number;
 };
 
 type CartItem = {
-  weapon_id: number;
+  weaponId: number;
 };
 
-export const mergeSupabaseLS = ({ cart_id }: MergeSupabaseLSParams) => {
+export const mergeSupabaseLS = ({ cartId }: MergeSupabaseLSParams) => {
   const cartItemsJSON = localStorage.getItem("cartItems");
 
   const cartItemsParsed = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
   const cartItemsIds = cartItemsParsed.map((item: CartItem) =>
-    Number(item.weapon_id),
+    Number(item.weaponId),
   );
-  addMultipleCartItemsSupabase({ cart_id, weapon_ids: cartItemsIds });
+  addMultipleCartItemsSupabase({ cartId, weaponIds: cartItemsIds });
   localStorage.clear();
 };

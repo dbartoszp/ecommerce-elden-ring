@@ -3,12 +3,12 @@ import { toast } from "react-hot-toast";
 import { deleteFromCart } from "./apiDeleteFromCart";
 
 type CartItem = {
-  weapon_id: number;
+  weaponId: number;
 };
 
 export const useDeleteFromCart = () => {
   return useMutation({
-    mutationFn: ({ weapon_id }: CartItem) => deleteFromCart({ weapon_id }),
+    mutationFn: ({ weaponId }: CartItem) => deleteFromCart({ weaponId }),
     onSuccess: () => {
       toast.success("Item deleted from the cart");
     },

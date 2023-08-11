@@ -5,20 +5,20 @@ import { addCartItemSupabase } from "../../utils/addCartItemsSupabase/addCartIte
 import { getCurrentUser } from "@/modules/users/getCurrentUser/getCurrentUser";
 
 type CartItem = {
-  weapon_id: number;
+  weaponId: number;
 };
 
-export const addToCart = async ({ weapon_id }: CartItem) => {
+export const addToCart = async ({ weaponId }: CartItem) => {
   try {
     const user = await getCurrentUser();
     if (!user) {
-      await addCartItemsLS({ weapon_id });
+      await addCartItemsLS({ weaponId });
       return;
     }
 
     const cartId = await createCartSupabase();
 
-    await addCartItemSupabase({ cart_id: cartId, weapon_id });
+    await addCartItemSupabase({ cartId, weaponId });
   } catch (err) {
     console.log(err);
   }

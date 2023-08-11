@@ -6,30 +6,30 @@ import { getCartSupabase } from "../../utils/getCartSupabase/getCartSupabase";
 
 type CartItem = {
   id: number;
-  weapon_id: number;
-  cart_id: number;
+  weaponId: number;
+  cartId: number;
 };
 
 type DeleteFromCartParams = {
-  weapon_id: number;
+  weaponId: number;
 };
 
-export const deleteFromCart = async ({ weapon_id }: DeleteFromCartParams) => {
+export const deleteFromCart = async ({ weaponId }: DeleteFromCartParams) => {
   try {
     const user = await getCurrentUser();
     if (!user) {
-      await deleteCartItemsLS({ weapon_id });
+      await deleteCartItemsLS({ weaponId });
       return;
     }
 
     const cartId = await createCartSupabase();
     const cartItems = await getCartSupabase(cartId);
     const weaponToDelete = cartItems.find(
-      (item: CartItem) => item.weapon_id === weapon_id,
+      (item: CartItem) => item.weaponId === weaponId,
     );
     if (!weaponToDelete) return;
 
-    deleteCartItemsSupabase({ cart_id: cartId, id: weaponToDelete.id });
+    deleteCartItemsSupabase({ cartId, id: weaponToDelete.id });
   } catch (err) {
     console.log(err);
   }

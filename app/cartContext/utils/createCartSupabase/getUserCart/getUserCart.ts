@@ -9,7 +9,7 @@ export const getUserCart = async () => {
   const { data, error } = await supabase
     .from("Carts")
     .select("*")
-    .eq("user_id", user?.user.id);
+    .eq("userId", user?.user.id);
   const cart = createCartReturnSchema.safeParse(data);
   //   console.log(cart, data);
   if (error) {

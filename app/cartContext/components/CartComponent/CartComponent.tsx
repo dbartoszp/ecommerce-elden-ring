@@ -5,7 +5,7 @@ import { countWeaponsById } from "../../utils/countWeaponsById/countWeaponsById"
 export const CartComponent = () => {
   const cartWeapons = useGetCart();
 
-  let weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weapon_id);
+  let weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weaponId);
   if (!weaponsIds) weaponsIds = [];
 
   const weapons = useGetWeaponsByIds(weaponsIds).data;
