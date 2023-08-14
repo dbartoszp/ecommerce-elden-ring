@@ -1,11 +1,11 @@
 "use client";
 
-import { CartComponent } from "@/modules/cart/components/CartComponent/CartComponent";
+import { Cart } from "@/modules/cart/components/CartComponent/CartComponent";
 
 export default function CartPage() {
   return (
     <main>
-      <CartComponent />
+      <Cart />
     </main>
   );
 }

@@ -9,6 +9,8 @@ type ModalProps = {
   openText: string;
   title: string;
   description?: string;
+  openSize?: string;
+  openVariant?: string;
 };
 
 export const Modal = ({
@@ -16,6 +18,8 @@ export const Modal = ({
   openText,
   title,
   description,
+  openSize = "md",
+  openVariant = "secondary",
 }: ModalProps) => {
   return (
     <Dialog.Root>
@@ -36,8 +40,9 @@ export const Modal = ({
             <div>
               <Dialog.Close asChild>
                 <Button
-                  size="md"
-                  variant="secondary"
+                  //!! TO FIX
+                  size={openSize}
+                  variant={openVariant}
                   onClick={() => console.log("closed")}
                 >
                   <HiXMark />

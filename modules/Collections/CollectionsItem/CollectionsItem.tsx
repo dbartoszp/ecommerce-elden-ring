@@ -35,7 +35,6 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform md:bottom-12">
         <Modal
           title={`Check out the ${collection.title} collection`}
-          description="Description test!!!"
           openText={`Check out the ${collection.title} collection`}
         >
           {weapons.data.map((weapon) => (

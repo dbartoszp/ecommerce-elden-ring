@@ -57,7 +57,7 @@ export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {
             {weapon.name}
           </span>
           <span className="ml-5 mt-5 font-semibold text-dark-green">
-            {weapon.price / 100}zł
+            {weapon.price / 100} PLN
           </span>
         </div>
         <div className="flex space-x-2 font-semibold">
