@@ -8,7 +8,6 @@ export default async function AccountPage() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  console.log(session);
 
   if (!session) {
     redirect("/login");

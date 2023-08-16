@@ -22,7 +22,6 @@ export const Cart = () => {
         </div>
       </div>
     );
-  console.log(weaponsIds);
 
   return (
     <div className="mx-2 flex flex-col items-center py-12">

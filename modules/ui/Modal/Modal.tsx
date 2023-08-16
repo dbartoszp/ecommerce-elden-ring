@@ -9,8 +9,9 @@ type ModalProps = {
   openText: string;
   title: string;
   description?: string;
-  openSize?: string;
   openVariant?: string;
+  onOpen?: () => void;
+  onClose?: () => void;
 };
 
 export const Modal = ({
@@ -18,17 +19,23 @@ export const Modal = ({
   openText,
   title,
   description,
-  openSize = "md",
   openVariant = "secondary",
+  onOpen,
+  onClose,
 }: ModalProps) => {
+  const handleOpen = () => {
+    if (!onOpen) return;
+    onOpen();
+  };
+  const handleClose = () => {
+    if (!onClose) return;
+    onClose();
+  };
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button
-          size="md"
-          variant="secondary"
-          onClick={() => console.log("opened")}
-        >
+        <Button size="md" variant={openVariant} onClick={handleOpen}>
           {openText}
         </Button>
       </Dialog.Trigger>
@@ -39,12 +46,7 @@ export const Modal = ({
             <span>{title}</span>
             <div>
               <Dialog.Close asChild>
-                <Button
-                  //!! TO FIX
-                  size={openSize}
-                  variant={openVariant}
-                  onClick={() => console.log("closed")}
-                >
+                <Button size="md" variant="secondary" onClick={handleClose}>
                   <HiXMark />
                 </Button>
               </Dialog.Close>

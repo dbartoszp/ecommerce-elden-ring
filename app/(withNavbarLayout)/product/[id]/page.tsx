@@ -1,6 +1,8 @@
 import { ProductDisclosure } from "@/modules/product/ProductDisclosure/ProductDisclosure";
 import { ProductGeneralInfo } from "@/modules/product/ProductGeneralInfo/ProductGeneralInfo";
 import { ProductImage } from "@/modules/product/ProductImage/ProductImage";
+import { ProductTable } from "@/modules/product/ProductTable/ProductTable";
+import { omitTypenameArray } from "@/modules/product/utils/OmitTypenameArray/OmitTypenameArray";
 
 const testProduct = {
   id: 219,
@@ -41,27 +43,57 @@ const testProduct = {
 
 export default function ProductPage() {
   const product = testProduct;
+  const productAttack = omitTypenameArray({ array: product.attack });
+  const productDefence = omitTypenameArray({ array: product.defence });
+  //!!TUTAJ NAME I SCALING (STRING)
+  // const productScalesWith = omitTypenameArray({ array: product.scalesWith });
+  const productRequiredAttributes = omitTypenameArray({
+    array: product.requiredAttributes,
+  });
 
   return (
-    <main className="justify-center sm:mt-72 sm:flex sm:flex-row sm:items-start sm:space-x-12 md:space-x-36">
-      <ProductImage src={product.image} alt={product.name} />
-      <ProductGeneralInfo
-        name={product.name}
-        weight={product.weight}
-        id={product.id}
-        price={product.price}
-        category={product.category}
-      />
-
-      <div className="mt-10">
+    <main className="sm:mt-36 sm:flex sm:flex-col sm:items-center sm:justify-center sm:space-x-12 md:space-x-36">
+      <div className="sm:flex sm:flex-row sm:items-center">
+        <ProductImage src={product.image} alt={product.name} />
+        <ProductGeneralInfo
+          name={product.name}
+          weight={product.weight}
+          id={product.id}
+          price={product.price}
+          category={product.category}
+        />
+      </div>
+      <div className="mt-12">
         <ProductDisclosure openText={"DESCRIPTION"}>
-          <span>{product.description}</span>
+          <span className="w-full">{product.description}</span>
         </ProductDisclosure>
         <ProductDisclosure openText="ATTACK & SCALING">
-          <span>table1 table2</span>
+          <div className="flex justify-around">
+            <div className="bg-light-green p-2 text-center">
+              <label className="font-semibold tracking-wider">ATTACK</label>
+              <ProductTable array={productAttack} />
+            </div>
+            <div className="bg-light-green p-2 text-center">
+              <label className="font-semibold tracking-wider">SCALING</label>
+              <ProductTable array={productAttack} />
+              {/* //!!TUTAJ NAME I SCALING (STRING) */}
+              {/* <ProductTable array={productDefence} /> */}
+            </div>
+          </div>
         </ProductDisclosure>
         <ProductDisclosure openText="DEFENCE & REQUIREMENTS">
-          <span>table3 table4</span>
+          <div className="flex justify-around">
+            <div className="bg-light-green p-2 text-center">
+              <label className="font-semibold tracking-wider">DEFENCE</label>
+              <ProductTable array={productDefence} />
+            </div>
+            <div className="bg-light-green p-2 text-center">
+              <label className="font-semibold tracking-wider">
+                REQUIREMENTS
+              </label>
+              <ProductTable array={productRequiredAttributes} />
+            </div>
+          </div>
         </ProductDisclosure>
       </div>
     </main>

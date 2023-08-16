@@ -3,21 +3,13 @@ import { useDeleteFromCart } from "@/modules/cart/hooks/useDeleteFromCart/useDel
 import { useGetCart } from "@/modules/cart/hooks/useGetCart/useGetCart";
 import { countWeaponsById } from "@/modules/cart/utils/countWeaponsById/countWeaponsById";
 import { Button } from "@/modules/ui/Button/Button";
+import { Weapon } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds.schema";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 
-type Weapon = {
-  id: number;
-  name: string;
-  category: string;
-  weight: number;
-  image: string;
-  price: number;
-};
-
 type CollectionsModalItemProps = {
-  weapon: Weapon;
+  weapon: Weapon[number];
 };
 
 export const CollectionsModalItem = ({ weapon }: CollectionsModalItemProps) => {

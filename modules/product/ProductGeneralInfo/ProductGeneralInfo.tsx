@@ -1,7 +1,7 @@
 "use client";
 import { useAddToCart } from "@/modules/cart/hooks/useAddToCart/useAddToCart";
-import { Button } from "@/modules/ui/Button/Button";
 import { Modal } from "@/modules/ui/Modal/Modal";
+import { ProductGeneralInfoModal } from "./ProductGeneralInfoModal/ProductGeneralInfoModal";
 
 type ProductGeneralInfoProps = {
   id: number;
@@ -33,12 +33,14 @@ export const ProductGeneralInfo = ({
       <h2 className="text-lg font-semibold">
         <span>{price / 100} PLN</span>
       </h2>
-      <div className="flex justify-center">
-        {/* <Button size="lg" onClick={handleAddToCart}>
-          ADD TO CART
-        </Button> */}
-        <Modal title={`Added ${name} to the cart!`} openText={`ADD TO CART`}>
-          koksze
+      <div className="mt-6 flex justify-center">
+        <Modal
+          title={`Added ${name} to the cart!`}
+          openText={`ADD TO CART`}
+          openVariant="primary"
+          onOpen={handleAddToCart}
+        >
+          <ProductGeneralInfoModal />
         </Modal>
       </div>
     </div>
