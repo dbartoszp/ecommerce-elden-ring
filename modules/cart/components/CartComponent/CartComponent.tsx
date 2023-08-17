@@ -5,10 +5,8 @@ import { CartSkeleton } from "./CartSkeleton";
 
 export const Cart = () => {
   const cartWeapons = useGetCart();
-
+  if (cartWeapons.isInitialLoading) return <CartSkeleton />;
   const weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weaponId);
-
-  if (cartWeapons.isLoading) return <CartSkeleton />;
   if (!weaponsIds || weaponsIds?.length < 1)
     return (
       <div className="mx-2 pb-48 pt-64 sm:pb-72">
@@ -24,7 +22,7 @@ export const Cart = () => {
     );
 
   return (
-    <div className="mx-2 flex flex-col items-center py-12">
+    <div className="mx-2 flex flex-col items-center py-12 pt-36">
       <div className="mb-2 justify-center border-b border-b-dark-green pb-2 text-center text-lg font-semibold uppercase tracking-widest">
         <h1>Items in your cart:</h1>
       </div>

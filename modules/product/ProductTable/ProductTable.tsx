@@ -1,7 +1,7 @@
-// type WithScaling = {
-//   name: string;
-//   scaling: string;
-// };
+type WithScaling = {
+  name: string;
+  scaling: string;
+};
 
 type WithAmount = {
   name: string;
@@ -9,12 +9,11 @@ type WithAmount = {
 };
 
 type ProductTableProps = {
-  array: WithAmount[];
+  array: (WithAmount | WithScaling)[];
 };
 
 export const ProductTable = ({ array }: ProductTableProps) => {
   const propertyNames = Object.keys(array[0]);
-  console.log(propertyNames);
 
   return (
     <table className="table-fixed ">
@@ -31,7 +30,6 @@ export const ProductTable = ({ array }: ProductTableProps) => {
         {array.map((item) => (
           <tr className=" text-center" key={item.name}>
             {propertyNames.map((pn) => {
-              //!! TU MI SIE KEY NIE PODOBA BARDZO
               return (
                 <td key={item.name + pn}>{item[pn as keyof typeof item]}</td>
               );

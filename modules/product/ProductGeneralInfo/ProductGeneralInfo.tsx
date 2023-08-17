@@ -2,6 +2,7 @@
 import { useAddToCart } from "@/modules/cart/hooks/useAddToCart/useAddToCart";
 import { Modal } from "@/modules/ui/Modal/Modal";
 import { ProductGeneralInfoModal } from "./ProductGeneralInfoModal/ProductGeneralInfoModal";
+import { useState } from "react";
 
 type ProductGeneralInfoProps = {
   id: number;
@@ -19,6 +20,7 @@ export const ProductGeneralInfo = ({
   price,
 }: ProductGeneralInfoProps) => {
   const addToCart = useAddToCart();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleAddToCart = () => {
     addToCart.mutate({ weaponId: id });
@@ -39,8 +41,10 @@ export const ProductGeneralInfo = ({
           openText={`ADD TO CART`}
           openVariant="primary"
           onOpen={handleAddToCart}
+          onOpenChange={() => setIsOpen(true)}
+          open={isOpen}
         >
-          <ProductGeneralInfoModal />
+          <ProductGeneralInfoModal onClose={() => setIsOpen(false)} />
         </Modal>
       </div>
     </div>

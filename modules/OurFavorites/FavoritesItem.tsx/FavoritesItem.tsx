@@ -4,8 +4,6 @@ import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-
-
 type FavoritesItemProps = {
   weapon: Weapon[number];
 };
@@ -30,7 +28,7 @@ export function FavoritesItem({ weapon }: FavoritesItemProps) {
               <Skeleton />
             )}
           </div>
-          <Link href={`/products/${weapon.id}`} variant="primary" size="lg">
+          <Link href={`/product/${weapon.id}`} variant="primary" size="lg">
             SHOP NOW
           </Link>
         </div>

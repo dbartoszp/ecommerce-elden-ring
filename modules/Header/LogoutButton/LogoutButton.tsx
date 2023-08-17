@@ -1,7 +1,6 @@
 "use client";
 import { useLogout } from "@/modules/users/useLogout/useLogout";
 import { Button } from "../../ui/Button/Button";
-import { HiArrowRightOnRectangle } from "react-icons/hi2";
 
 export const LogoutButton = () => {
   const logout = useLogout();
@@ -11,8 +10,14 @@ export const LogoutButton = () => {
 
   return (
     <div>
-      <Button size="lg" disabled={logout.isLoading} onClick={onLogout}>
-        <HiArrowRightOnRectangle />
+      <Button
+        variant="danger"
+        size="sm"
+        disabled={logout.isLoading}
+        onClick={onLogout}
+      >
+        LOGOUT
+        {/* <HiArrowRightOnRectangle /> */}
       </Button>
     </div>
   );

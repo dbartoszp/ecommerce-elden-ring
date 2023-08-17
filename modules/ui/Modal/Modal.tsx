@@ -12,6 +12,8 @@ type ModalProps = {
   openVariant?: string;
   onOpen?: () => void;
   onClose?: () => void;
+  open: boolean;
+  onOpenChange: () => void;
 };
 
 export const Modal = ({
@@ -22,6 +24,8 @@ export const Modal = ({
   openVariant = "secondary",
   onOpen,
   onClose,
+  open,
+  onOpenChange,
 }: ModalProps) => {
   const handleOpen = () => {
     if (!onOpen) return;
@@ -33,7 +37,7 @@ export const Modal = ({
   };
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Trigger asChild>
         <Button size="md" variant={openVariant} onClick={handleOpen}>
           {openText}

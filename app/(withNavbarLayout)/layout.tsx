@@ -7,6 +7,7 @@ import { Footer } from "@/modules/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ weight: "300", subsets: ["cyrillic"] });

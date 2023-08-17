@@ -12,8 +12,6 @@ export const ProductDisclosure = ({
   children,
   openText,
 }: ProductDisclosureProps) => {
-  //TODO responsiveness
-
   return (
     <div className="border-b border-b-elden-beige text-elden-beige sm:w-[500px]">
       <Disclosure as="div" className="bg-light-green">

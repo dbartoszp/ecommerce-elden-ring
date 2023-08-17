@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 import { CartItemSkeleton } from "../CartItem/CartItemSkeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+// import "react-loading-skeleton/dist/skeleton.css";
 
 export const CartItemsSkeleton = () => {
   return (

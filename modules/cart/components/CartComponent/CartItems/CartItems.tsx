@@ -1,23 +1,33 @@
+"use client";
 import { countWeaponsById } from "@/modules/cart/utils/countWeaponsById/countWeaponsById";
 import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 import { CartItem } from "./CartItem/CartItem";
 import { Link } from "@/modules/ui/Button/Link";
+import { useState } from "react";
 
 type CartItemsProps = {
   weaponIds: number[];
 };
 
 export const CartItems = ({ weaponIds }: CartItemsProps) => {
-  const weapons = useGetWeaponsByIds(weaponIds).data;
-  let totalPrice = 0;
+  const weaponsData = useGetWeaponsByIds(weaponIds);
+  // const [totalPrice, setTotalPrice] = useState(0);
+  const weapons = weaponsData.data;
 
+  let totalPrice = 0;
   const weaponItems = weapons?.map((weapon) => {
-    totalPrice +=
-      countWeaponsById({ weapons: weaponIds, weaponId: weapon.id }) *
-      weapon.price;
+    const weaponsCounted = countWeaponsById({
+      weapons: weaponIds,
+      weaponId: weapon.id,
+    });
+    totalPrice += weaponsCounted * weapon.price;
+    // setTotalPrice(
+    //   (totalPrice) => (totalPrice += weaponsCounted * weapon.price),
+    // );
+
     return {
       weapon,
-      count: countWeaponsById({ weapons: weaponIds, weaponId: weapon.id }),
+      count: weaponsCounted,
     };
   });
 
