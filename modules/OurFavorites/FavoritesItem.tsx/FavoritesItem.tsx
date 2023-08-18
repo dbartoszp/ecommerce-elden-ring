@@ -1,18 +1,11 @@
 import { Link } from "@/modules/ui/Button/Link";
+import { Weapon } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds.schema";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-type Weapon = {
-  id: number;
-  name: string;
-  category: string;
-  weight: number;
-  image: string;
-};
-
 type FavoritesItemProps = {
-  weapon: Weapon;
+  weapon: Weapon[number];
 };
 
 export function FavoritesItem({ weapon }: FavoritesItemProps) {
@@ -35,7 +28,7 @@ export function FavoritesItem({ weapon }: FavoritesItemProps) {
               <Skeleton />
             )}
           </div>
-          <Link href={`/products/${weapon.id}`} variant="primary" size="lg">
+          <Link href={`/product/${weapon.id}`} variant="primary" size="lg">
             SHOP NOW
           </Link>
         </div>

@@ -1,8 +1,10 @@
 import { Modal } from "@/modules/ui/Modal/Modal";
 import Image from "next/image";
 import { CollectionsModalItem } from "./CollectionsModalItem/CollectionsModalItem";
-import { useGetWeaponsByIds } from "@/modules/weapons/hooks/useGetWeaponsByIds/useGetWeaponsByIds";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
+import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
+import { useState } from "react";
+import { useDisclosure } from "@/modules/ui/Modal/useDisclosure/useDisclosure";
 
 type Collection = {
   title: string;
@@ -16,6 +18,7 @@ type CollectionsItemProps = {
 
 export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
   const weapons = useGetWeaponsByIds(collection.items);
+  const { isOpen, close, changeOpenState } = useDisclosure();
 
   if (weapons.isLoading || weapons.isFetching || !weapons.data) return null;
 
@@ -26,7 +29,7 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
   return (
     <div className="flex h-full  items-center justify-center">
       <Image
-        className="h-full  w-96 object-cover"
+        className="h-full  w-80 object-cover"
         src={collection.image}
         width={400}
         height={400}
@@ -35,15 +38,16 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform md:bottom-12">
         <Modal
           title={`Check out the ${collection.title} collection`}
-          description="Description test!!!"
           openText={`Check out the ${collection.title} collection`}
+          onClose={close}
+          onOpenChange={changeOpenState}
+          open={isOpen}
         >
           {weapons.data.map((weapon) => (
             <div key={weapon.id}>
               <CollectionsModalItem weapon={weapon} />
             </div>
           ))}
-          {/* <CollectionsModalItem /> */}
         </Modal>
       </div>
     </div>

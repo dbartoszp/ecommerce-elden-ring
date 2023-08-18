@@ -4,4 +4,4 @@ const clearWeapons = async () => {
   const { error } = await supabase.from("Weapons").delete().neq("id", 2137);
 };
 
-clearWeapons();
+await clearWeapons();

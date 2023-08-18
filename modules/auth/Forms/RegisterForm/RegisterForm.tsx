@@ -4,7 +4,7 @@ import { FormRow } from "../FormRow/FormRow";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useSignup } from "@/modules/users/hooks/useSignup";
+import { useSignup } from "@/modules/users/useSignup/useSignup";
 import { RegisterFormSchema } from "./RegisterForm.schema";
 
 type FormValues = z.infer<typeof RegisterFormSchema>;
@@ -34,7 +34,7 @@ export function RegisterForm() {
       <span className="ml-4 border-b border-b-dark-green pb-1 text-3xl font-semibold tracking-wide text-dark-green">
         ...OR CREATE AN ACCOUNT
       </span>
-      <form onSubmit={onSubmit} className="px-4 py-9">
+      <form onSubmit={onSubmit} className="mb-32 px-4 py-9">
         <FormRow id="firstName" label="FIRST NAME">
           <input
             type="text"

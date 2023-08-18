@@ -1,4 +1,6 @@
-import { LogoutButton } from "@/modules/Header/LogoutButton/LogoutButton";
+import { UserGeneralInfo } from "@/modules/userPanel/UserGeneralInfo/UserGeneralInfo";
+import { UserMain } from "@/modules/userPanel/UserMain/UserMain";
+import { UserOrders } from "@/modules/userPanel/UserOrders/UserOrders";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -8,15 +10,15 @@ export default async function AccountPage() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  console.log(session);
 
-  if (!session) {
+  if (!session || !session.user) {
     redirect("/login");
   }
   return (
-    <div>
-      <h1>Hello, {session.user.email}!</h1>
-      <LogoutButton />
+    <div className="items-center justify-center">
+      <UserMain />
+      <UserOrders />
+      <UserGeneralInfo />
     </div>
   );
 }

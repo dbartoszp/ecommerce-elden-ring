@@ -28,7 +28,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "services/supabase.mjs"
+    "services/supabase.mjs",
+    "**/*.mjs",
+    "seeds/weapons/utils/OmitTypeNameArray/OmitTypenameArray.ts"
   ],
   "exclude": ["node_modules"]
 }

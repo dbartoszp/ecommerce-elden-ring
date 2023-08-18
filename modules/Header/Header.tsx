@@ -72,7 +72,7 @@ export const Header = () => {
           </Navbar.NavbarGroupItem>
           <Navbar.NavbarGroupItem visibility="both">
             <div className="mr-5 md:mr-0">
-              <Link href="/">
+              <Link href="/cart">
                 <HiShoppingCart size={iconSize} />
               </Link>
             </div>
