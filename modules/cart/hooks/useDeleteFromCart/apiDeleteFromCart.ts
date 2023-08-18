@@ -15,22 +15,18 @@ type DeleteFromCartParams = {
 };
 
 export const deleteFromCart = async ({ weaponId }: DeleteFromCartParams) => {
-  try {
-    const user = await getCurrentUser();
-    if (!user) {
-      await deleteCartItemsLS({ weaponId });
-      return;
-    }
-
-    const cartId = await createCartSupabase();
-    const cartItems = await getCartSupabase(cartId);
-    const weaponToDelete = cartItems.find(
-      (item: CartItem) => item.weaponId === weaponId,
-    );
-    if (!weaponToDelete) return;
-
-    await deleteCartItemsSupabase({ cartId, id: weaponToDelete.id });
-  } catch (err) {
-    console.log(err);
+  const user = await getCurrentUser();
+  if (!user) {
+    await deleteCartItemsLS({ weaponId });
+    return;
   }
+
+  const cartId = await createCartSupabase();
+  const cartItems = await getCartSupabase(cartId);
+  const weaponToDelete = cartItems.find(
+    (item: CartItem) => item.weaponId === weaponId,
+  );
+  if (!weaponToDelete) return;
+
+  await deleteCartItemsSupabase({ cartId, id: weaponToDelete.id });
 };

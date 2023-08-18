@@ -1,11 +1,11 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core/core.cjs";
 import { faker } from "@faker-js/faker";
 import supabase from "../../services/supabase.mjs";
-import { error } from "console";
+import { omitTypenameArray } from "./utils/OmitTypeNameArray/OmitTypenameArray.js";
 
 const GET_WEAPONS = gql`
   query {
-    weapon(limit: 30) {
+    weapon(limit: 60) {
       id
       name
       image
@@ -40,8 +40,7 @@ const client = new ApolloClient({
 const addWeapon = async (newWeapon) => {
   try {
     const randomNumber = faker.number.int({ min: 10000, max: 100000 });
-
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("Weapons")
       .insert([
         {
@@ -51,10 +50,10 @@ const addWeapon = async (newWeapon) => {
           description: newWeapon.description,
           category: newWeapon.category,
           weight: newWeapon.weight,
-          attack: newWeapon.attack,
-          defence: newWeapon.defence,
-          scalesWith: newWeapon.scalesWith,
-          requiredAttributes: newWeapon.requiredAttributes,
+          attack: omitTypenameArray(newWeapon.attack),
+          defence: omitTypenameArray(newWeapon.defence),
+          scalesWith: omitTypenameArray(newWeapon.scalesWith),
+          requiredAttributes: omitTypenameArray(newWeapon.requiredAttributes),
           price: randomNumber,
         },
       ])
@@ -81,4 +80,4 @@ const seedWeapons = async () => {
   }
 };
 
-seedWeapons();
+await seedWeapons();

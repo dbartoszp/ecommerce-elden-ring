@@ -21,14 +21,18 @@ export const Product = ({ id }: ProductProps) => {
     return <ProductNotFound />;
   const product = productData.data[0];
 
-  const productAttack = omitTypenameArray({ array: product.attack });
-  const productDefence = omitTypenameArray({ array: product.defence });
-  const productScalesWith = omitTypenameArray({
-    array: product.scalesWith,
-  });
-  const productRequiredAttributes = omitTypenameArray({
-    array: product.requiredAttributes,
-  });
+  const productAttack = product.attack;
+  const productDefence = product.defence;
+  const productScalesWith = product.scalesWith;
+  const productRequiredAttributes = product.requiredAttributes;
+  // const productAttack = omitTypenameArray({ array: product.attack });
+  // const productDefence = omitTypenameArray({ array: product.defence });
+  // const productScalesWith = omitTypenameArray({
+  //   array: product.scalesWith,
+  // });
+  // const productRequiredAttributes = omitTypenameArray({
+  //   array: product.requiredAttributes,
+  // });
 
   return (
     <main className="sm:mt-36 sm:flex sm:flex-col sm:items-center sm:justify-center sm:space-x-12 md:space-x-36">

@@ -8,17 +8,13 @@ type CartItem = {
 };
 
 export const addToCart = async ({ weaponId }: CartItem) => {
-  try {
-    const user = await getCurrentUser();
-    if (!user) {
-      await addCartItemsLS({ weaponId });
-      return;
-    }
-
-    const cartId = await createCartSupabase();
-
-    await addCartItemSupabase({ cartId, weaponId });
-  } catch (err) {
-    console.log(err);
+  const user = await getCurrentUser();
+  if (!user) {
+    await addCartItemsLS({ weaponId });
+    return;
   }
+
+  const cartId = await createCartSupabase();
+
+  await addCartItemSupabase({ cartId, weaponId });
 };

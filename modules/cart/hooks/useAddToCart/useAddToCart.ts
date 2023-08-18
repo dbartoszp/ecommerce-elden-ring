@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addToCart } from "./apiAddToCart";
 import { toast } from "react-hot-toast";
 import { parseGetCart } from "../../utils/parseGetCart/parseGetCart";
+import { parseContextReturnSchema } from "../../utils/parseContext/parseContext.schema";
 
 type CartItem = {
   weaponId: number;
@@ -15,8 +16,11 @@ export const useAddToCart = () => {
       toast.success("Item added to the cart");
     },
     onError: (_, __, context) => {
-      //@ts-ignore
-      client.setQueryData(["Carts"], context.currentCart);
+      const contextParsed = parseContextReturnSchema.safeParse(context);
+
+      if (contextParsed.success) {
+        client.setQueryData(["Carts"], contextParsed.data.currentCart);
+      }
       toast.error("Could not add this item to the cart.");
     },
     onMutate: async ({ weaponId }) => {
@@ -34,10 +38,7 @@ export const useAddToCart = () => {
       }
       const newCart = [...currentCartParsed.data, { weaponId }];
       client.setQueryData(["Cart"], newCart);
-      return { currentCart, newCart };
+      return currentCart;
     },
-    // onSettled: async () => {
-    //   await client.invalidateQueries(["Carts"]);
-    // },
   });
 };

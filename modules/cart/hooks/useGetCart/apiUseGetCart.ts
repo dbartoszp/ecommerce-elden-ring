@@ -4,14 +4,10 @@ import { getCartSupabase } from "../../utils/getCartSupabase/getCartSupabase";
 import { createCartSupabase } from "../../utils/createCartSupabase/createCartSupabase";
 
 export const getCart = async () => {
-  try {
-    const user = await getCurrentUser();
-    if (!user) {
-      return getCartLS();
-    }
-    const cartId = await createCartSupabase();
-    return await getCartSupabase(cartId);
-  } catch (err) {
-    console.log(err);
+  const user = await getCurrentUser();
+  if (!user) {
+    return getCartLS();
   }
+  const cartId = await createCartSupabase();
+  return await getCartSupabase(cartId);
 };

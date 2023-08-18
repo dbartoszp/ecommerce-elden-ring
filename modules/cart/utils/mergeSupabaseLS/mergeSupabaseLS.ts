@@ -8,13 +8,13 @@ type CartItem = {
   weaponId: number;
 };
 
-export const mergeSupabaseLS = ({ cartId }: MergeSupabaseLSParams) => {
+export const mergeSupabaseLS = async ({ cartId }: MergeSupabaseLSParams) => {
   const cartItemsJSON = localStorage.getItem("cartItems");
 
   const cartItemsParsed = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
   const cartItemsIds = cartItemsParsed.map((item: CartItem) =>
     Number(item.weaponId),
   );
-  addMultipleCartItemsSupabase({ cartId, weaponIds: cartItemsIds });
+  await addMultipleCartItemsSupabase({ cartId, weaponIds: cartItemsIds });
   localStorage.clear();
 };

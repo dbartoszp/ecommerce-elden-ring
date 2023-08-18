@@ -17,7 +17,6 @@ export const LogoutButton = () => {
         onClick={onLogout}
       >
         LOGOUT
-        {/* <HiArrowRightOnRectangle /> */}
       </Button>
     </div>
   );

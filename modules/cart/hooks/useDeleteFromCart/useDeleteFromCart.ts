@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { deleteFromCart } from "./apiDeleteFromCart";
 import { parseGetCart } from "../../utils/parseGetCart/parseGetCart";
+import { parseContextReturnSchema } from "../../utils/parseContext/parseContext.schema";
 
 type CartItem = {
   weaponId: number;
@@ -15,8 +16,11 @@ export const useDeleteFromCart = () => {
       toast.success("Item deleted from the cart");
     },
     onError: (_, __, context) => {
-      //@ts-ignore
-      client.setQueryData(["Carts"], context.currentCart);
+      const contextParsed = parseContextReturnSchema.safeParse(context);
+
+      if (contextParsed.success) {
+        client.setQueryData(["Carts"], contextParsed.data.currentCart);
+      }
       toast.error("Could not delete this item from the cart.");
     },
     onMutate: async ({ weaponId }) => {

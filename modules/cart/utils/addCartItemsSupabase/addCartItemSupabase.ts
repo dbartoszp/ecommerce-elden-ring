@@ -8,13 +8,9 @@ type CartItems = {
 
 export const addCartItemSupabase = async ({ cartId, weaponId }: CartItems) => {
   const supabase = createClientComponentClient();
-  try {
-    const { error } = await supabase
-      .from("CartItems")
-      .insert([{ cartId, weaponId }])
-      .select();
-    if (error) console.log(error);
-  } catch (err) {
-    console.log(err);
-  }
+  const { error } = await supabase
+    .from("CartItems")
+    .insert([{ cartId, weaponId }])
+    .select();
+  if (error) console.log(error);
 };

@@ -24,9 +24,8 @@ export const signup = async (user: UserSignup) => {
     },
   });
   const cartId = await createCartSupabase();
-  mergeSupabaseLS({ cartId });
+  await mergeSupabaseLS({ cartId });
   if (error) throw new Error(error.message);
 
-  console.log(data);
   return data;
 };
