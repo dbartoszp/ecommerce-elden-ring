@@ -3,7 +3,7 @@ import { countWeaponsById } from "@/modules/cart/utils/countWeaponsById/countWea
 import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 import { CartItem } from "./CartItem/CartItem";
 import { Link } from "@/modules/ui/Button/Link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type CartItemsProps = {
   weaponIds: number[];
@@ -11,16 +11,30 @@ type CartItemsProps = {
 
 export const CartItems = ({ weaponIds }: CartItemsProps) => {
   const weaponsData = useGetWeaponsByIds(weaponIds);
-  // const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const weapons = weaponsData.data;
 
-  let totalPrice = 0;
+  useEffect(() => {
+    if (weapons) {
+      const newTotalPrice = weapons.reduce((acc, weapon) => {
+        console.log(weapon);
+        const count = countWeaponsById({
+          weapons: weaponIds,
+          weaponId: weapon.id,
+        });
+        return acc + count * weapon.price;
+      }, 0);
+
+      setTotalPrice(newTotalPrice);
+    }
+  }, [weapons, weaponIds]);
+
   const weaponItems = weapons?.map((weapon) => {
     const weaponsCounted = countWeaponsById({
       weapons: weaponIds,
       weaponId: weapon.id,
     });
-    totalPrice += weaponsCounted * weapon.price;
+    // totalPrice += weaponsCounted * weapon.price;
     // setTotalPrice(
     //   (totalPrice) => (totalPrice += weaponsCounted * weapon.price),
     // );

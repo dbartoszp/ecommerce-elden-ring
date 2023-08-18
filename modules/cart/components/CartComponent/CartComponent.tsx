@@ -5,6 +5,7 @@ import { CartSkeleton } from "./CartSkeleton";
 
 export const Cart = () => {
   const cartWeapons = useGetCart();
+  console.log(cartWeapons.data);
   if (cartWeapons.isInitialLoading) return <CartSkeleton />;
   const weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weaponId);
   if (!weaponsIds || weaponsIds?.length < 1)
@@ -15,7 +16,7 @@ export const Cart = () => {
         </div>
         <div className="flex justify-center">
           <Link variant="primary" size="lg" href="/products">
-            GO AND ADD SOME!
+            GO AND ADD SOME
           </Link>
         </div>
       </div>

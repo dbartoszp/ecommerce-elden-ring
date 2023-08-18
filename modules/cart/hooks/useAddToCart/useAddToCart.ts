@@ -3,6 +3,7 @@ import { addToCart } from "./apiAddToCart";
 import { toast } from "react-hot-toast";
 import { getCartSupabaseReturnSchema } from "../../utils/getCartSupabase/getCartSupabase.schema";
 import { getCartLSReturnSchema } from "../../utils/getCartLS/getCartLS.schema";
+import { getCurrentUser } from "@/modules/users/getCurrentUser/getCurrentUser";
 
 type CartItem = {
   weaponId: number;
@@ -23,13 +24,19 @@ export const useAddToCart = () => {
     onMutate: async ({ weaponId }) => {
       await client.cancelQueries({ queryKey: ["Carts"] });
       const currentCart = client.getQueryData(["Carts"]);
-      console.log(currentCart);
+
       if (!currentCart) return;
-      //TODO LS/supabase sprawdzanie
-      const currentCartParsed = getCartLSReturnSchema.safeParse(currentCart);
-      //TODO ERROR
+      const user = await getCurrentUser();
+      let currentCartParsed;
+      if (!user) {
+        currentCartParsed = getCartLSReturnSchema.safeParse(currentCart);
+      } else {
+        currentCartParsed = getCartSupabaseReturnSchema.safeParse(currentCart);
+      }
+
       if (!currentCartParsed.success) {
-        console.log(currentCartParsed.error);
+        client.setQueryData(["Carts"], currentCart);
+        toast.error("Could not add this item to the cart.");
         throw new Error();
       }
       const newCart = [...currentCartParsed.data, { weaponId }];

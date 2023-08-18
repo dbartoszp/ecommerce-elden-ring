@@ -29,7 +29,7 @@ export const deleteFromCart = async ({ weaponId }: DeleteFromCartParams) => {
     );
     if (!weaponToDelete) return;
 
-    deleteCartItemsSupabase({ cartId, id: weaponToDelete.id });
+    await deleteCartItemsSupabase({ cartId, id: weaponToDelete.id });
   } catch (err) {
     console.log(err);
   }
