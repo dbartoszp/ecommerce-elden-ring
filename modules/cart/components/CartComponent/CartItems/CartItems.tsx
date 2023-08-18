@@ -17,7 +17,6 @@ export const CartItems = ({ weaponIds }: CartItemsProps) => {
   useEffect(() => {
     if (weapons) {
       const newTotalPrice = weapons.reduce((acc, weapon) => {
-        console.log(weapon);
         const count = countWeaponsById({
           weapons: weaponIds,
           weaponId: weapon.id,
@@ -51,10 +50,10 @@ export const CartItems = ({ weaponIds }: CartItemsProps) => {
                 weapon={weaponItem.weapon}
                 count={weaponItem.count}
                 onAdd={() =>
-                  setTotalPrice((tp) => (tp += weaponItem.weapon.price))
+                  setTotalPrice((tp) => tp + weaponItem.weapon.price)
                 }
                 onDelete={() =>
-                  setTotalPrice((tp) => (tp -= weaponItem.weapon.price))
+                  setTotalPrice((tp) => tp - weaponItem.weapon.price)
                 }
               />
             </div>

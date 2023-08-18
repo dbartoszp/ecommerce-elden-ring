@@ -12,8 +12,8 @@ type ModalProps = {
   openVariant?: string;
   onOpen?: () => void;
   onClose?: () => void;
-  open: boolean;
-  onOpenChange: () => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
 export const Modal = ({
@@ -49,11 +49,9 @@ export const Modal = ({
           <Dialog.Title className="flex w-full justify-between text-2xl font-semibold">
             <span>{title}</span>
             <div>
-              <Dialog.Close asChild>
-                <Button size="md" variant="secondary" onClick={handleClose}>
-                  <HiXMark />
-                </Button>
-              </Dialog.Close>
+              <Button size="md" variant="secondary" onClick={handleClose}>
+                <HiXMark />
+              </Button>
             </div>
           </Dialog.Title>
           <Dialog.Description>{description}</Dialog.Description>

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { CollectionsModalItem } from "./CollectionsModalItem/CollectionsModalItem";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
 import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
+import { useState } from "react";
+import { useDisclosure } from "@/modules/ui/Modal/useDisclosure/useDisclosure";
 
 type Collection = {
   title: string;
@@ -16,6 +18,7 @@ type CollectionsItemProps = {
 
 export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
   const weapons = useGetWeaponsByIds(collection.items);
+  const { isOpen, close, changeOpenState } = useDisclosure();
 
   if (weapons.isLoading || weapons.isFetching || !weapons.data) return null;
 
@@ -36,6 +39,9 @@ export const CollectionsItem = ({ collection }: CollectionsItemProps) => {
         <Modal
           title={`Check out the ${collection.title} collection`}
           openText={`Check out the ${collection.title} collection`}
+          onClose={close}
+          onOpenChange={changeOpenState}
+          open={isOpen}
         >
           {weapons.data.map((weapon) => (
             <div key={weapon.id}>

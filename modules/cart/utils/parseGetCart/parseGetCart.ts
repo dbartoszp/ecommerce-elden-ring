@@ -4,7 +4,6 @@ import { getCartSupabaseReturnSchema } from "../getCartSupabase/getCartSupabase.
 
 export const parseGetCart = async (currentCart: unknown) => {
   const user = await getCurrentUser();
-  console.log(currentCart);
   if (!user) {
     return getCartLSReturnSchema.safeParse(currentCart);
   } else {

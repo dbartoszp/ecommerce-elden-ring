@@ -2,13 +2,13 @@
 
 import { useGetWeaponById } from "@/modules/weapons/useGetWeaponById/hooks/useGetWeaponById";
 import React from "react";
-import { ProductNotFound } from "../ProductNotFound/ProductNotFound";
+import { ProductSkeleton } from "./ProductSkeleton/ProductSkeleton";
+import { ProductNotFound } from "./ProductNotFound/ProductNotFound";
 import { omitTypenameArray } from "../utils/OmitTypenameArray/OmitTypenameArray";
-import { ProductImage } from "../ProductImage/ProductImage";
-import { ProductGeneralInfo } from "../ProductGeneralInfo/ProductGeneralInfo";
-import { ProductDisclosure } from "../ProductDisclosure/ProductDisclosure";
-import { ProductTable } from "../ProductTable/ProductTable";
-import { ProductSkeleton } from "../ProductSkeleton/ProductSkeleton";
+import { ProductImage } from "./ProductImage/ProductImage";
+import { ProductGeneralInfo } from "./ProductGeneralInfo/ProductGeneralInfo";
+import { ProductDisclosure } from "./ProductDisclosure/ProductDisclosure";
+import { ProductTable } from "./ProductTable/ProductTable";
 
 type ProductProps = {
   id: number;

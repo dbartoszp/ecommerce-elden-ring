@@ -44,6 +44,12 @@ export const CartItem = ({ weapon, count, onAdd, onDelete }: WeaponItem) => {
           <span className="text-lg font-semibold">{countNew}</span>
         </span>
         <span>
+          Individual price:{" "}
+          <span className="text-lg font-semibold">
+            {weapon.price / 100 + " PLN"}
+          </span>
+        </span>
+        <span>
           Total price:{" "}
           <span className="text-lg font-semibold">
             {(countNew * weapon.price) / 100} PLN

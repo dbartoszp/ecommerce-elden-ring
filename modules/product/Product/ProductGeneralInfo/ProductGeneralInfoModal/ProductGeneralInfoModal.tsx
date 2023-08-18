@@ -8,7 +8,7 @@ export const ProductGeneralInfoModal = ({
   onClose,
 }: ProductGeneralinfoModalProps) => {
   return (
-    <div className="flex flex-col space-y-4 pt-4">
+    <div className="flex flex-col space-y-4 pt-4 text-center">
       <Button onClick={onClose} size="lg" variant="primary">
         Continue shopping
       </Button>

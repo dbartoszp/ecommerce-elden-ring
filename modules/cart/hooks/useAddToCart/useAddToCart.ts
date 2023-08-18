@@ -1,9 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addToCart } from "./apiAddToCart";
 import { toast } from "react-hot-toast";
-import { getCartSupabaseReturnSchema } from "../../utils/getCartSupabase/getCartSupabase.schema";
-import { getCartLSReturnSchema } from "../../utils/getCartLS/getCartLS.schema";
-import { getCurrentUser } from "@/modules/users/getCurrentUser/getCurrentUser";
 import { parseGetCart } from "../../utils/parseGetCart/parseGetCart";
 
 type CartItem = {
@@ -39,5 +36,8 @@ export const useAddToCart = () => {
       client.setQueryData(["Cart"], newCart);
       return { currentCart, newCart };
     },
+    // onSettled: async () => {
+    //   await client.invalidateQueries(["Carts"]);
+    // },
   });
 };

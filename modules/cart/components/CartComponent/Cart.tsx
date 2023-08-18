@@ -1,3 +1,4 @@
+"use client";
 import { Link } from "@/modules/ui/Button/Link";
 import { useGetCart } from "../../hooks/useGetCart/useGetCart";
 import { CartItems } from "./CartItems/CartItems";
@@ -5,7 +6,6 @@ import { CartSkeleton } from "./CartSkeleton";
 
 export const Cart = () => {
   const cartWeapons = useGetCart();
-  console.log(cartWeapons.data);
   if (cartWeapons.isInitialLoading) return <CartSkeleton />;
   const weaponsIds = cartWeapons.data?.map((cartWeapon) => cartWeapon.weaponId);
   if (!weaponsIds || weaponsIds?.length < 1)

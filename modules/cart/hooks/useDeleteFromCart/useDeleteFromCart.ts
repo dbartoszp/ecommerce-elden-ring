@@ -1,9 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { deleteFromCart } from "./apiDeleteFromCart";
-import { getCurrentUser } from "@/modules/users/getCurrentUser/getCurrentUser";
-import { getCartLSReturnSchema } from "../../utils/getCartLS/getCartLS.schema";
-import { getCartSupabaseReturnSchema } from "../../utils/getCartSupabase/getCartSupabase.schema";
 import { parseGetCart } from "../../utils/parseGetCart/parseGetCart";
 
 type CartItem = {
