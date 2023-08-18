@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { getCartSupabaseReturnSchema } from "../../utils/getCartSupabase/getCartSupabase.schema";
 import { getCartLSReturnSchema } from "../../utils/getCartLS/getCartLS.schema";
 import { getCurrentUser } from "@/modules/users/getCurrentUser/getCurrentUser";
+import { parseGetCart } from "../../utils/parseGetCart/parseGetCart";
 
 type CartItem = {
   weaponId: number;
@@ -26,13 +27,8 @@ export const useAddToCart = () => {
       const currentCart = client.getQueryData(["Carts"]);
 
       if (!currentCart) return;
-      const user = await getCurrentUser();
-      let currentCartParsed;
-      if (!user) {
-        currentCartParsed = getCartLSReturnSchema.safeParse(currentCart);
-      } else {
-        currentCartParsed = getCartSupabaseReturnSchema.safeParse(currentCart);
-      }
+
+      const currentCartParsed = await parseGetCart(currentCart);
 
       if (!currentCartParsed.success) {
         client.setQueryData(["Carts"], currentCart);
