@@ -44,7 +44,7 @@ export const Product = ({ id }: ProductProps) => {
       </div>
       <div className="mt-12">
         <ProductDisclosure openText={"DESCRIPTION"}>
-          <span className="w-full">{product.description}</span>
+          <span className="w-full text-dark-green">{product.description}</span>
         </ProductDisclosure>
         <ProductDisclosure openText="ATTACK & SCALING">
           <div className="flex justify-around">

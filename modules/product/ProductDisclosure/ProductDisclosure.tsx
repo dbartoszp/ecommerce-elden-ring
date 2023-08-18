@@ -14,7 +14,7 @@ export const ProductDisclosure = ({
 }: ProductDisclosureProps) => {
   return (
     <div className="border-b border-b-elden-beige text-elden-beige sm:w-[500px]">
-      <Disclosure as="div" className="bg-light-green">
+      <Disclosure as="div">
         {({ open }) => (
           <>
             <Disclosure.Button as="button" className="w-full">
@@ -29,7 +29,7 @@ export const ProductDisclosure = ({
               </div>
             </Disclosure.Button>
             <Disclosure.Panel>
-              <div className="bg-light-green-lighter p-2">{children}</div>
+              <div className="bg-elden-beige p-2">{children}</div>
             </Disclosure.Panel>
           </>
         )}

@@ -24,7 +24,7 @@ export function LoginForm() {
       <span className="ml-4 border-b border-b-dark-green pb-1 text-3xl font-semibold tracking-wide text-dark-green">
         LOGIN
       </span>
-      <form onSubmit={onSubmit} className="px-4 py-9">
+      <form onSubmit={onSubmit} className="px-4 py-9 ">
         <FormRow label="EMAIL" id="email">
           <input
             className="rounded-sm  px-6 py-3 text-dark-green shadow-md"

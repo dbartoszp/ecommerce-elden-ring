@@ -34,10 +34,6 @@ export const CartItems = ({ weaponIds }: CartItemsProps) => {
       weapons: weaponIds,
       weaponId: weapon.id,
     });
-    // totalPrice += weaponsCounted * weapon.price;
-    // setTotalPrice(
-    //   (totalPrice) => (totalPrice += weaponsCounted * weapon.price),
-    // );
 
     return {
       weapon,
@@ -51,7 +47,16 @@ export const CartItems = ({ weaponIds }: CartItemsProps) => {
         {weaponItems?.map((weaponItem) => {
           return (
             <div key={weaponItem.weapon.id}>
-              <CartItem weapon={weaponItem.weapon} count={weaponItem.count} />
+              <CartItem
+                weapon={weaponItem.weapon}
+                count={weaponItem.count}
+                onAdd={() =>
+                  setTotalPrice((tp) => (tp += weaponItem.weapon.price))
+                }
+                onDelete={() =>
+                  setTotalPrice((tp) => (tp -= weaponItem.weapon.price))
+                }
+              />
             </div>
           );
         })}

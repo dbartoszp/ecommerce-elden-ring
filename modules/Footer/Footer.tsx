@@ -1,4 +1,3 @@
-import { Button } from "../ui/Button/Button";
 import { Link } from "../ui/Button/Link";
 import { ImageCard } from "../ui/ImageCard/ImageCard";
 import { FooterItem } from "./FooterItem/FooterItem";
@@ -6,7 +5,7 @@ import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
 
 export function Footer() {
   return (
-    <footer className="mt-20 items-center">
+    <footer className="items-center">
       <div className="flex flex-col items-center space-y-10 bg-dark-green py-10 text-center text-elden-beige ">
         <FooterItem>
           <h3 className="mb-12 font-semibold">

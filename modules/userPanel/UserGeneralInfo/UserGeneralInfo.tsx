@@ -9,7 +9,7 @@ export const UserGeneralInfo = async () => {
   const user = session?.user;
   console.log(user);
   return (
-    <div className="mt-12 items-center justify-center text-center">
+    <div className="mb-32 mt-12 items-center justify-center text-center">
       <h2>
         Your current email: <span className="font-semibold">{user?.email}</span>
         <br />
