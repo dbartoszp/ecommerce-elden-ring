@@ -1,5 +1,5 @@
 "use client";
-import { useLogout } from "@/modules/users/useLogout/useLogout";
+import { useLogout } from "@/modules/auth/user/hooks/useLogout/useLogout";
 import { Button } from "../../ui/Button/Button";
 
 export const LogoutButton = () => {

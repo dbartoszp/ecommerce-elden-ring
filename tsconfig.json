@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "services/supabase.mjs",
     "**/*.mjs",
-    "seeds/weapons/utils/OmitTypeNameArray/OmitTypenameArray.ts"
+    "seeds/weapons/utils/OmitTypeNameArray/OmitTypenameArray.mjs"
   ],
   "exclude": ["node_modules"]
 }

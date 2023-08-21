@@ -4,7 +4,6 @@ import { useGetWeaponById } from "@/modules/weapons/useGetWeaponById/hooks/useGe
 import React from "react";
 import { ProductSkeleton } from "./ProductSkeleton/ProductSkeleton";
 import { ProductNotFound } from "./ProductNotFound/ProductNotFound";
-import { omitTypenameArray } from "../utils/OmitTypenameArray/OmitTypenameArray";
 import { ProductImage } from "./ProductImage/ProductImage";
 import { ProductGeneralInfo } from "./ProductGeneralInfo/ProductGeneralInfo";
 import { ProductDisclosure } from "./ProductDisclosure/ProductDisclosure";
@@ -25,14 +24,6 @@ export const Product = ({ id }: ProductProps) => {
   const productDefence = product.defence;
   const productScalesWith = product.scalesWith;
   const productRequiredAttributes = product.requiredAttributes;
-  // const productAttack = omitTypenameArray({ array: product.attack });
-  // const productDefence = omitTypenameArray({ array: product.defence });
-  // const productScalesWith = omitTypenameArray({
-  //   array: product.scalesWith,
-  // });
-  // const productRequiredAttributes = omitTypenameArray({
-  //   array: product.requiredAttributes,
-  // });
 
   return (
     <main className="sm:mt-36 sm:flex sm:flex-col sm:items-center sm:justify-center sm:space-x-12 md:space-x-36">

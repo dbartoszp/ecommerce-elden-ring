@@ -11,28 +11,24 @@ export const useGetWeaponByIdReturnSchema = z.array(
     description: z.string(),
     attack: z.array(
       z.object({
-        __typename: z.string(),
         name: z.string(),
         amount: z.number(),
       }),
     ),
     defence: z.array(
       z.object({
-        __typename: z.string(),
         name: z.string(),
         amount: z.number(),
       }),
     ),
     scalesWith: z.array(
       z.object({
-        __typename: z.string(),
         name: z.string(),
         scaling: z.string(),
       }),
     ),
     requiredAttributes: z.array(
       z.object({
-        __typename: z.string(),
         name: z.string(),
         amount: z.number(),
       }),

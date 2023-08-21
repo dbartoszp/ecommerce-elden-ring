@@ -12,7 +12,6 @@ import {
   HiUserCircle,
   HiXMark,
 } from "react-icons/hi2";
-import clsx from "clsx";
 
 const iconSize = 30;
 
@@ -58,15 +57,8 @@ export const Header = () => {
           <Navbar.NavbarGroupItem visibility="desktop">
             <Link href="/">ABOUT US</Link>
           </Navbar.NavbarGroupItem>
-          <Navbar.NavbarGroupItem visibility="desktop">
-            <input
-              className="hidden w-32 rounded-md bg-dark-green px-1 md:block"
-              type="text"
-              placeholder="Search..."
-            />
-          </Navbar.NavbarGroupItem>
-          <Navbar.NavbarGroupItem visibility="mobile">
-            <Link href="/">
+          <Navbar.NavbarGroupItem visibility="both">
+            <Link href="/search">
               <HiMagnifyingGlass size={iconSize} />
             </Link>
           </Navbar.NavbarGroupItem>

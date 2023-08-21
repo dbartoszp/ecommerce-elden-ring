@@ -8,15 +8,15 @@ import { KeenSliderPlugin, useKeenSlider } from "keen-slider/react";
 const tabs = [
   {
     title: "Bleed",
-    ids: [219, 220, 221],
+    ids: [419, 420, 421],
   },
   {
     title: "Suffer",
-    ids: [222, 223, 224],
+    ids: [422, 423, 424],
   },
   {
     title: "Poisoned",
-    ids: [225, 226, 227],
+    ids: [425, 426, 427],
   },
 ];
 

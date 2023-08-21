@@ -10,12 +10,12 @@ const collectionsTest = [
   {
     title: "Samurai",
     image: "/images/collections/samurai.jpg",
-    items: [219, 220, 221, 223, 224],
+    items: [419, 420, 421, 423, 424],
   },
   {
     title: "Tank",
     image: "/images/collections/tank.jpg",
-    items: [225, 226, 227, 228, 229],
+    items: [425, 426, 427, 428, 429],
   },
 ];
 
