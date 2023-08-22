@@ -1,5 +1,5 @@
-import supabase from "../../../services/supabase.mjs";
-import { useGetWeaponsByIdsReturnSchema } from "./hooks/useGetWeaponsByIds.schema";
+import supabase from "@/services/supabase.mjs";
+import { useGetWeaponsByReturnSchema } from "../useGetWeaponsBy.schema";
 
 export const getWeaponsByIds = async (ids: number[]) => {
   const { data, error } = await supabase
@@ -7,7 +7,7 @@ export const getWeaponsByIds = async (ids: number[]) => {
     .select("*")
     .in("id", ids);
 
-  const weapons = useGetWeaponsByIdsReturnSchema.safeParse(data);
+  const weapons = useGetWeaponsByReturnSchema.safeParse(data);
   if (error) {
     console.error(error);
     throw new Error("weapons couldnt be loaded");

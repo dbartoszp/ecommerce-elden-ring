@@ -3,7 +3,7 @@ import { useDeleteFromCart } from "@/modules/cart/hooks/useDeleteFromCart/useDel
 import { useGetCart } from "@/modules/cart/hooks/useGetCart/useGetCart";
 import { countWeaponsById } from "@/modules/cart/utils/countWeaponsById/countWeaponsById";
 import { Button } from "@/modules/ui/Button/Button";
-import { Weapon } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds.schema";
+import { Weapon } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsBy.schema";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";

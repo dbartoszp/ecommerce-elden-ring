@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const useGetWeaponsByIdsReturnSchema = z.array(
+export const useGetWeaponsByReturnSchema = z.array(
   z.object({
     id: z.number(),
     category: z.string(),
@@ -10,4 +10,4 @@ export const useGetWeaponsByIdsReturnSchema = z.array(
     price: z.number(),
   }),
 );
-export type Weapon = z.infer<typeof useGetWeaponsByIdsReturnSchema>;
+export type Weapon = z.infer<typeof useGetWeaponsByReturnSchema>;

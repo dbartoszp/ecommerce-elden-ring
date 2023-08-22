@@ -1,30 +1,33 @@
+import { useSearchParams } from "next/navigation";
 import { WeaponCard } from "./WeaponCard/WeaponCard";
-const testWeapon = {
-  name: "Test Weapon",
-  weight: 3.5,
-  price: 213799,
-  category: "Axe",
-  description: "testDescription",
-  id: 403,
-  image:
-    "https://eldenring.fanapis.com/images/weapons/17f69c35d2cl0i1oh7zuqfb3mdvsj.png",
-};
+import { useGetWeaponsByName } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsByName/hooks/useGetWeaponsByName";
 
-type WeaponListProps = {
-  query: string;
-};
+//!!przeniesc do modułu weapons
 
-export const WeaponList = ({ query }: WeaponListProps) => {
+export const WeaponList = () => {
+  const searchParams = useSearchParams();
+
+  const weapons = useGetWeaponsByName(searchParams.get("query") ?? "");
+
+  if (weapons.isLoading) return <div>tu bedzie skeleton ladowania</div>;
+  if (!weapons.isSuccess) {
+    return <div>tu bedzie error</div>;
+  }
   return (
-    <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-10 lg:gap-16">
-      <h2> witam ciebie {query}</h2>
-      <WeaponCard weapon={testWeapon} />
-      <WeaponCard weapon={testWeapon} />
-      <WeaponCard weapon={testWeapon} />
-      <WeaponCard weapon={testWeapon} />
-      <WeaponCard weapon={testWeapon} />
-      <WeaponCard weapon={testWeapon} />
-      <WeaponCard weapon={testWeapon} />
-    </div>
+    <>
+      <h2 className="mb-4">
+        Showing <span className="font-semibold">{weapons.data.length}</span>{" "}
+        {`result${weapons.data.length !== 1 ? "s" : ""}`}
+      </h2>
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-10 lg:gap-16">
+        {weapons.data.map((weapon) => {
+          return (
+            <div key={weapon.id}>
+              <WeaponCard weapon={weapon} />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };

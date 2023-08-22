@@ -1,9 +1,9 @@
 "use client";
 import { countWeaponsById } from "@/modules/cart/utils/countWeaponsById/countWeaponsById";
-import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 import { CartItem } from "./CartItem/CartItem";
 import { Link } from "@/modules/ui/Button/Link";
 import { useEffect, useState } from "react";
+import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 
 type CartItemsProps = {
   weaponIds: number[];

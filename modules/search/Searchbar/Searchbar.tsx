@@ -1,21 +1,22 @@
-"use client";
 import { FormRow } from "@/modules/auth/Forms/FormRow/FormRow";
-import { Button } from "@/modules/ui/Button/Button";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import { useDebouncedCallback } from "use-debounce";
 
 export const Searchbar = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const searchParams = useSearchParams();
+
+  const debounced = useDebouncedCallback((query: string) => {
+    router.push(`/search/?query=${query}`);
+  }, 500);
 
   const onSubmit = handleSubmit(({ input }) => {
-    router.push(`/search/?query=${input}`);
+    debounced(input);
   });
 
   return (
-    <div className="mb-12 mt-24 flex flex-col items-center justify-center text-left">
+    <div className="mb-6 mt-24 flex flex-col items-center justify-center text-left">
       <form onSubmit={onSubmit} className="flex flex-col">
         <FormRow id="searchResults" label="SEARCH RESULTS">
           <input
@@ -23,17 +24,10 @@ export const Searchbar = () => {
             type="text"
             placeholder="Enter search term"
             {...register("input")}
+            onChange={(e) => debounced(e.target.value)}
           />
         </FormRow>
-        {/* <div className="flex items-center justify-center">
-          <Button onClick={onSubmit} size="sm" variant="secondary">
-            <HiMagnifyingGlass size={30} />
-          </Button>
-        </div> */}
       </form>
-      <span>
-        solo bolo we testing /search?query={searchParams.get("query")}
-      </span>
     </div>
   );
 };

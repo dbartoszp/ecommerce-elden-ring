@@ -1,4 +1,4 @@
-import { Weapon } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds.schema";
+import { Weapon } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsBy.schema";
 import Image from "next/image";
 
 type WeaponParam = {

@@ -3,7 +3,7 @@ import { FavoritesItem } from "../FavoritesItem.tsx/FavoritesItem";
 import "keen-slider/keen-slider.min.css";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
 import { FavoritesItemSkeleton } from "../FavoritesItem.tsx/FavoritesItemSkeleton";
-import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
+import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 
 type FavoritesTabProps = {
   weaponIds: number[];

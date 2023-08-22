@@ -2,9 +2,8 @@ import { Modal } from "@/modules/ui/Modal/Modal";
 import Image from "next/image";
 import { CollectionsModalItem } from "./CollectionsModalItem/CollectionsModalItem";
 import { isZodError } from "@/modules/errors/type-guards/zod/isZodError";
-import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
-import { useState } from "react";
 import { useDisclosure } from "@/modules/ui/Modal/useDisclosure/useDisclosure";
+import { useGetWeaponsByIds } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsByIds/hooks/useGetWeaponsByIds";
 
 type Collection = {
   title: string;
