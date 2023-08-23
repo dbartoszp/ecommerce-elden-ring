@@ -1,7 +1,7 @@
 import supabase from "@/services/supabase.mjs";
-import { useGetWeaponCountReturnSchema } from "./hooks/useGetWeaponCount.schema";
+import { useGetWeaponCountReturnSchema } from "../useGetWeaponCount.schema";
 
-export const getWeaponCount = async () => {
+export const getWeaponCountTotal = async () => {
   const { error, count } = await supabase
     .from("Weapons")
     .select("*", { count: "exact", head: true });

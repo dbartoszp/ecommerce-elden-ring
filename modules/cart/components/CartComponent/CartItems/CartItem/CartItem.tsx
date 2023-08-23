@@ -1,7 +1,7 @@
 import { useAddToCart } from "@/modules/cart/hooks/useAddToCart/useAddToCart";
 import { useDeleteFromCart } from "@/modules/cart/hooks/useDeleteFromCart/useDeleteFromCart";
 import { Button } from "@/modules/ui/Button/Button";
-import { Weapon } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds.schema";
+import { Weapon } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsBy.schema";
 import Image from "next/image";
 import { useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";

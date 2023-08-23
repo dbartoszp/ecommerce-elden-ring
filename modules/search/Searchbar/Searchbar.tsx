@@ -8,7 +8,7 @@ export const Searchbar = () => {
   const { register, handleSubmit } = useForm();
 
   const debounced = useDebouncedCallback((query: string) => {
-    router.push(`/search/?query=${query}`);
+    router.replace(`/search/?page=1&query=${query}`);
   }, 500);
 
   const onSubmit = handleSubmit(({ input }) => {

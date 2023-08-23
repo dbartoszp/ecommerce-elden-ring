@@ -7,7 +7,7 @@ export default function SearchPage() {
     <div className="mb-24">
       <Searchbar />
       <div className="flex flex-col items-center justify-center">
-        <SearchResultsPage itemsPerPage={10} />
+        <SearchResultsPage itemsPerPage={8} />
       </div>
     </div>
   );

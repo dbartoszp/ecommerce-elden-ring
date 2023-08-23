@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getWeaponCount } from "../apiUseGetWeaponCount";
+import { getWeaponCountTotal } from "../apiUseGetWeaponCountTotal";
 
-export const useGetWeaponCount = () => {
+export const useGetWeaponCountTotal = () => {
   return useQuery({
     queryKey: ["Weapons"],
-    queryFn: () => getWeaponCount(),
+    queryFn: () => getWeaponCountTotal(),
     refetchOnWindowFocus: true,
     cacheTime: Infinity,
   });
