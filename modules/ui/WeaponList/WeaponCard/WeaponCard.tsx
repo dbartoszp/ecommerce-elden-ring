@@ -23,7 +23,7 @@ export const WeaponCard = ({ weapon }: WeaponParam) => {
       <div className="flex w-full flex-col bg-[#fff] p-2  tracking-wide text-dark-green sm:p-6">
         <span className="font-semibold">{weapon.name}</span>
         <span>
-          {weapon.category}, weight: {weapon.weight}
+          {weapon.filter}, weight: {weapon.weight}
         </span>
         <span>{weapon.price / 100} PLN</span>
         <Link variant="primary" size="sm" href={`/product/${weapon.id}`}>

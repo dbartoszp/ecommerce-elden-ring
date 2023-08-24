@@ -10,7 +10,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "seed-weapons": "node ./seeds/weapons/weaponsSeeder.mjs",
-    "clear-weapons": "node ./seeds/weapons/clearWeapons.mjs"
+    "clear-weapons": "node ./seeds/weapons/clearWeapons.mjs",
+    "seed-filters": "node ./seeds/filters/filtersSeeder.mjs",
+    "clear-filters": "node ./seeds/filters/clearFilters.mjs",
+    "seed-categories": "node ./seeds/categories/categoriesSeeder.mjs",
+    "clear-categories": "node ./seeds/categories/clearCategories.mjs"
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",

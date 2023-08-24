@@ -1,5 +1,5 @@
 import { Link } from "@/modules/ui/Button/Link";
-import { Weapon } from "@/modules/weapons/useGetWeaponsByIds/hooks/useGetWeaponsByIds.schema";
+import { Weapon } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsBy.schema";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -24,7 +24,7 @@ export function FavoritesItem({ weapon }: FavoritesItemProps) {
             <h2>{weapon.name || <Skeleton />}</h2>
           </div>
           <div className="capitalize">
-            {`${weapon.category}, weighing only ${weapon.weight}!` || (
+            {`${weapon.filter}, weighing only ${weapon.weight}!` || (
               <Skeleton />
             )}
           </div>

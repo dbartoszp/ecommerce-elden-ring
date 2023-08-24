@@ -5,7 +5,7 @@ import omitTypenameArray from "./utils/OmitTypeNameArray/OmitTypenameArray.mjs";
 
 const GET_WEAPONS = gql`
   query {
-    weapon(limit: 30) {
+    weapon(limit: 3) {
       id
       name
       image
@@ -48,7 +48,10 @@ const addWeapon = async (newWeapon) => {
           name: newWeapon.name,
           image: newWeapon.image,
           description: newWeapon.description,
-          category: newWeapon.category,
+          //todo category -> filter
+          filter: newWeapon.category,
+          // !! po filtrze szukanie categoryID
+          // categoryID: newWeapon.category,
           weight: newWeapon.weight,
           attack: omitTypenameArray(newWeapon.attack),
           defence: omitTypenameArray(newWeapon.defence),

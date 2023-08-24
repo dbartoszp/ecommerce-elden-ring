@@ -36,12 +36,11 @@ export const SearchResultsPage = ({ itemsPerPage }: SearchResultsPageProps) => {
         total={queryCount.data}
       />
       <div className="flex flex-col space-y-10">
+        <WeaponList weapons={weapons.data} />
         <SearchResultsNavigation
           itemsPerPage={itemsPerPage}
           queryCount={queryCount.data}
         />
-
-        <WeaponList weapons={weapons.data} />
       </div>
     </div>
   );

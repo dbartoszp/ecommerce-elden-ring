@@ -3,7 +3,7 @@ import { z } from "zod";
 export const useGetWeaponByIdReturnSchema = z.array(
   z.object({
     id: z.number(),
-    category: z.string(),
+    filter: z.string(),
     name: z.string(),
     weight: z.number(),
     image: z.string(),

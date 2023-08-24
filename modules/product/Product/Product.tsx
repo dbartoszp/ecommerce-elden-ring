@@ -34,7 +34,7 @@ export const Product = ({ id }: ProductProps) => {
           weight={product.weight}
           id={product.id}
           price={product.price}
-          category={product.category}
+          category={product.filter}
         />
       </div>
       <div className="mt-12 sm:mb-24 sm:mt-36">
