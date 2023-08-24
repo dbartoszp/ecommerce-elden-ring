@@ -9,6 +9,7 @@ type BaseProps = {
   children: ReactNode;
   size?: keyof typeof sizes;
   variant?: string;
+  rounded?: boolean;
 };
 
 export type LinkVariantProps = {
@@ -39,18 +40,19 @@ const sizes: Sizes = {
 
 const variants: ClassNames = {
   primary:
-    "rounded-xl bg-light-green enabled:hover:bg-light-green-lighter text-elden-beige",
+    "bg-light-green enabled:hover:bg-light-green-lighter text-elden-beige",
   secondary:
-    "rounded-xl enabled:hover:bg-light-olive-lighter bg-light-olive text-dark-green",
-  link: "text-elden-beige rounded-xl bg-transparent enabled:hover:bg-transparent enabled:hover:underline",
+    "enabled:hover:bg-light-olive-lighter bg-light-olive text-dark-green",
+  link: "text-elden-beige bg-transparent enabled:hover:bg-transparent enabled:hover:underline",
   danger:
-    "bg-red-700 text-red-100 enabled:hover:bg-red-600 rounded-xl border border-red-50",
+    "bg-red-700 text-red-100 enabled:hover:bg-red-600  border border-red-50",
 };
 export const BaseButton = (props: BaseButtonProps) => {
-  const { variant = "primary", size = "md" } = props;
+  const { variant = "primary", size = "md", rounded = true } = props;
   const className = clsx("font-semibold transition-all duration-300", {
     [variants[variant]]: props.variant,
     [sizes[size]]: props.size,
+    "rounded-xl": rounded,
   });
   if (props.as === "a") {
     return (

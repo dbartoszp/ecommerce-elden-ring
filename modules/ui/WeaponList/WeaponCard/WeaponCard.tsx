@@ -2,6 +2,7 @@ import { Weapon } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsBy.schema
 import Image from "next/image";
 import { Button } from "../../Button/Button";
 import { useAddToCart } from "@/modules/cart/hooks/useAddToCart/useAddToCart";
+import { Link } from "../../Button/Link";
 
 type WeaponParam = {
   weapon: Weapon[number];
@@ -19,12 +20,15 @@ export const WeaponCard = ({ weapon }: WeaponParam) => {
         alt={weapon.name}
         src={weapon.image}
       />
-      <div className="flex w-full flex-col bg-[#fff] p-2 tracking-wide text-dark-green sm:p-6">
+      <div className="flex w-full flex-col bg-[#fff] p-2  tracking-wide text-dark-green sm:p-6">
         <span className="font-semibold">{weapon.name}</span>
         <span>
           {weapon.category}, weight: {weapon.weight}
         </span>
         <span>{weapon.price / 100} PLN</span>
+        <Link variant="primary" size="sm" href={`/product/${weapon.id}`}>
+          <span className="text-center"> GO TO PRODUCT PAGE</span>
+        </Link>
         <Button
           onClick={() => addToCart.mutate({ weaponId: weapon.id })}
           variant="secondary"

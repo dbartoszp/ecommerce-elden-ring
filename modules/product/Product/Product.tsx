@@ -1,6 +1,5 @@
 "use client";
 
-import { useGetWeaponById } from "@/modules/weapons/useGetWeaponById/hooks/useGetWeaponById";
 import React from "react";
 import { ProductSkeleton } from "./ProductSkeleton/ProductSkeleton";
 import { ProductNotFound } from "./ProductNotFound/ProductNotFound";
@@ -8,6 +7,7 @@ import { ProductImage } from "./ProductImage/ProductImage";
 import { ProductGeneralInfo } from "./ProductGeneralInfo/ProductGeneralInfo";
 import { ProductDisclosure } from "./ProductDisclosure/ProductDisclosure";
 import { ProductTable } from "./ProductTable/ProductTable";
+import { useGetWeaponById } from "@/modules/weapons/useGetWeaponBy/useGetWeaponById/hooks/useGetWeaponById";
 
 type ProductProps = {
   id: number;
@@ -37,7 +37,7 @@ export const Product = ({ id }: ProductProps) => {
           category={product.category}
         />
       </div>
-      <div className="mt-12">
+      <div className="mt-12 sm:mb-24 sm:mt-36">
         <ProductDisclosure openText={"DESCRIPTION"}>
           <span className="w-full text-dark-green">{product.description}</span>
         </ProductDisclosure>

@@ -1,4 +1,4 @@
-import supabase from "../../../services/supabase.mjs";
+import supabase from "@/services/supabase.mjs";
 import { useGetWeaponByIdReturnSchema } from "./hooks/useGetWeaponById.schema";
 
 export const getWeaponById = async (id: number) => {
