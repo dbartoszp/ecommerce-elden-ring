@@ -8,6 +8,7 @@ export const useGetWeaponsByReturnSchema = z.array(
     weight: z.number(),
     image: z.string(),
     price: z.number(),
+    categoryID: z.number(),
   }),
 );
 export type Weapon = z.infer<typeof useGetWeaponsByReturnSchema>;

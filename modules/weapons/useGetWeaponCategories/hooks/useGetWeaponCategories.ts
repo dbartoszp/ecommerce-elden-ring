@@ -3,7 +3,7 @@ import { getWeaponCategories } from "../apiUseGetWeaponCategories";
 
 export const useGetWeaponCategories = () => {
   return useQuery({
-    queryKey: ["distinct_categories"],
+    queryKey: ["Categories"],
     queryFn: () => getWeaponCategories(),
     refetchOnWindowFocus: true,
   });

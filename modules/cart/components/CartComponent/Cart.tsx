@@ -15,7 +15,7 @@ export const Cart = () => {
           <h1>There are currently no items in your cart!</h1>
         </div>
         <div className="flex justify-center">
-          <Link variant="primary" size="lg" href="/products">
+          <Link variant="primary" size="lg" href="/search">
             GO AND ADD SOME
           </Link>
         </div>

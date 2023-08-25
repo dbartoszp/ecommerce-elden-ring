@@ -35,15 +35,15 @@ export const Header = () => {
 
         <Navbar.Group>
           <Navbar.NavbarGroupItem visibility="desktop">
-            <Link href="/dsd">MELEE</Link>
+            <Link href="/search?category=melee">MELEE</Link>
           </Navbar.NavbarGroupItem>
 
           <Navbar.NavbarGroupItem visibility="desktop">
-            <Link href="/">SORCERY</Link>
+            <Link href="/search?category=sorcery">SORCERY</Link>
           </Navbar.NavbarGroupItem>
 
           <Navbar.NavbarGroupItem visibility="desktop">
-            <Link href="/">ALL</Link>
+            <Link href="/search">ALL</Link>
           </Navbar.NavbarGroupItem>
         </Navbar.Group>
 

@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { SearchResultsCounter } from "./SearchResultsCounter/SearchResultsCounter";
 import { useGetWeaponCountByName } from "@/modules/weapons/useGetWeaponCount/useGetWeaponCountByName/hooks/useGetWeaponCountByName";
 import { SearchResultsNavigation } from "./SearchResultsNavigation/SearchResultsNavigation";
+import { useGetAllWeapons } from "@/modules/weapons/useGetAllWeapons/hooks/useGetAllWeapons";
 
 type SearchResultsPageProps = {
   itemsPerPage: number;
@@ -12,7 +13,8 @@ type SearchResultsPageProps = {
 export const SearchResultsPage = ({ itemsPerPage }: SearchResultsPageProps) => {
   const searchParams = useSearchParams();
 
-  const queryCount = useGetWeaponCountByName(searchParams.get("query") ?? "");
+  const weaponsAll = useGetAllWeapons();
+  const queryCount = useGetWeaponCountByName(searchParams.get("query") || "");
 
   const currentPage = Number(searchParams.get("page")) || 1;
 
@@ -22,10 +24,11 @@ export const SearchResultsPage = ({ itemsPerPage }: SearchResultsPageProps) => {
     name: searchParams.get("query") ?? "",
   });
 
-  if (!weapons.isSuccess) {
+  if (!weapons.isSuccess || !weaponsAll.isSuccess) {
     return <div>error z weapons</div>;
   }
 
+  console.log();
   if (!queryCount.isSuccess) {
     return <div>error z liczeniem</div>;
   }

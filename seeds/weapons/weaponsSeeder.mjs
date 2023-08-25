@@ -2,10 +2,11 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core/core.cjs";
 import { faker } from "@faker-js/faker";
 import supabase from "../../services/supabase.mjs";
 import omitTypenameArray from "./utils/OmitTypeNameArray/OmitTypenameArray.mjs";
+import getCategoryIDByFilter from "./utils/getCategoryIDByFilter/getCategoryIDByFilter.mjs";
 
 const GET_WEAPONS = gql`
   query {
-    weapon(limit: 3) {
+    weapon(limit: 50) {
       id
       name
       image
@@ -48,10 +49,8 @@ const addWeapon = async (newWeapon) => {
           name: newWeapon.name,
           image: newWeapon.image,
           description: newWeapon.description,
-          //todo category -> filter
           filter: newWeapon.category,
-          // !! po filtrze szukanie categoryID
-          // categoryID: newWeapon.category,
+          categoryID: await getCategoryIDByFilter(newWeapon.category),
           weight: newWeapon.weight,
           attack: omitTypenameArray(newWeapon.attack),
           defence: omitTypenameArray(newWeapon.defence),

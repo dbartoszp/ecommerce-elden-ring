@@ -54,12 +54,12 @@ export function Drawer({
           {categories.data?.map((category) => (
             <li
               className="mx-4 border-b border-elden-beige pb-1 pl-8"
-              key={category.category}
+              key={category.name}
             >
               <DrawerItem
                 iconSize={iconSize}
-                category={category.category}
-                href={category.category}
+                category={category.name}
+                href={category.name}
               />
             </li>
           ))}

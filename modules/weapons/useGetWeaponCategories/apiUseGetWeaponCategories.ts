@@ -2,7 +2,7 @@ import supabase from "../../../services/supabase.mjs";
 import { useGetWeaponCategoriesReturnSchema } from "./hooks/useGetWeaponCategories.schema";
 
 export const getWeaponCategories = async () => {
-  const { data, error } = await supabase.from("distinct_categories").select();
+  const { data, error } = await supabase.from("Categories").select();
   const categories = useGetWeaponCategoriesReturnSchema.safeParse(data);
 
   if (error) {

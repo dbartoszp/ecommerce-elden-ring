@@ -10,7 +10,6 @@ const omitTypenameArray = (array) => {
       return { name, scaling };
     }
   });
-  console.log(newArray);
   return newArray;
 };
 export default omitTypenameArray;

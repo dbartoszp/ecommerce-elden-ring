@@ -1,13 +1,12 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client/core/core.cjs";
-import supabase from "../../services/supabase.mjs";
+import supabase from "../../../../services/supabase.mjs";
 
-const client = new ApolloClient({
-  uri: "https://eldenring.fanapis.com/api/graphql",
-  cache: new InMemoryCache(),
-});
-
-const getCategoryIDByFilter = (filterName) => {
-    const {data: filters ,error} = await supabase.from('Filters').select('categoryID').eq()
+const getCategoryIDByFilter = async (filterName) => {
+  if (!filterName) return null;
+  const { data: filters, error } = await supabase
+    .from("Filters")
+    .select("categoryID")
+    .eq("name", filterName);
+  return filters[0].categoryID;
 };
 
 export default getCategoryIDByFilter;

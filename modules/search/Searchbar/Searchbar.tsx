@@ -16,7 +16,7 @@ export const Searchbar = () => {
   });
 
   return (
-    <div className="mb-6 mt-24 flex flex-col items-center justify-center text-left">
+    <div className="t-24 mb-6 flex flex-col items-center justify-center pt-16 text-left">
       <form onSubmit={onSubmit} className="flex flex-col">
         <FormRow id="searchResults" label="SEARCH RESULTS">
           <input
