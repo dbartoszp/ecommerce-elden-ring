@@ -1,14 +1,14 @@
 import { FormRow } from "@/modules/auth/Forms/FormRow/FormRow";
-import { useRouter } from "next/navigation";
+import { useQueryString } from "@/modules/navigation/hooks/useQueryString/useQueryString";
 import { useForm } from "react-hook-form";
 import { useDebouncedCallback } from "use-debounce";
 
 export const Searchbar = () => {
-  const router = useRouter();
   const { register, handleSubmit } = useForm();
+  const { createQueryString, pushQueryStringRouter } = useQueryString();
 
   const debounced = useDebouncedCallback((query: string) => {
-    router.replace(`/search/?page=1&query=${query}`);
+    pushQueryStringRouter(createQueryString([{ name: "query", value: query }]));
   }, 500);
 
   const onSubmit = handleSubmit(({ input }) => {

@@ -5,18 +5,24 @@ type getWeaponsByRangeParams = {
   start: number;
   end: number;
   name: string;
+  filter: string;
+  categoryID: number;
 };
 
 export const getWeaponsByRange = async ({
   start,
   end,
   name,
+  filter,
+  categoryID,
 }: getWeaponsByRangeParams) => {
-  const { data, error } = await supabase
-    .from("Weapons")
-    .select("*")
+  let query = supabase.from("Weapons").select("*");
+  if (categoryID !== 0) query = query.eq("categoryID", categoryID);
+  if (filter !== "") query = query.eq("filter", filter);
+  const { data, error } = await query
     .ilike("name", `%${name}%`)
     .range(start, end);
+
   const weapons = useGetWeaponsByReturnSchema.safeParse(data);
   if (error) {
     console.error(error);

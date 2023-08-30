@@ -3,7 +3,7 @@ import { getWeaponFiltersByCategory } from "../apiUseGetWeaponFiltersByCategory"
 
 export const useGetWeaponFiltersByCategory = (categoryID: number) => {
   return useQuery({
-    queryKey: ["Filters"],
+    queryKey: ["Filters", categoryID],
     queryFn: () => getWeaponFiltersByCategory(categoryID),
     refetchOnWindowFocus: true,
   });

@@ -11,7 +11,7 @@ export const getWeaponFiltersByCategory = async (categoryID: number) => {
 
   if (error) {
     console.error(error);
-    throw new Error("categories couldnt be loaded");
+    throw new Error("filters couldnt be loaded");
   }
   if (filters.success) {
     return filters.data;

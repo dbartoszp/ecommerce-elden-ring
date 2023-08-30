@@ -1,8 +1,8 @@
 import { Weapon } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsBy.schema";
 import Image from "next/image";
-import { Button } from "../../Button/Button";
 import { useAddToCart } from "@/modules/cart/hooks/useAddToCart/useAddToCart";
-import { Link } from "../../Button/Link";
+import { Link } from "@/modules/ui/Button/Link";
+import { Button } from "@/modules/ui/Button/Button";
 
 type WeaponParam = {
   weapon: Weapon[number];

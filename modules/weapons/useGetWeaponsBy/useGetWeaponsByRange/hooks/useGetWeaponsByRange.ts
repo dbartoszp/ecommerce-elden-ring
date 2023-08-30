@@ -4,16 +4,20 @@ type getWeaponsByRangeParams = {
   start: number;
   end: number;
   name: string;
+  categoryID: number;
+  filter: string;
 };
 
 export const useGetWeaponsByRange = ({
   start,
   end,
   name,
+  categoryID,
+  filter,
 }: getWeaponsByRangeParams) => {
   return useQuery({
-    queryKey: ["Weapons", start, end, name],
-    queryFn: () => getWeaponsByRange({ start, end, name }),
+    queryKey: ["Weapons", start, end, name, categoryID, filter],
+    queryFn: () => getWeaponsByRange({ start, end, name, categoryID, filter }),
     refetchOnWindowFocus: true,
     cacheTime: Infinity,
   });

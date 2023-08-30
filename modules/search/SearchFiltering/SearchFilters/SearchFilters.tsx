@@ -1,31 +1,29 @@
 import { Button } from "@/modules/ui/Button/Button";
+import { ErrorMessage } from "@/modules/ui/ErrorMessage/ErrorMessage";
 import { useGetWeaponFiltersByCategory } from "@/modules/weapons/useGetWeaponFiltersByCategory/hooks/useGetWeaponFiltersByCategory";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useSearchParams } from "next/navigation";
+import { SearchFiltersSkeleton } from "./SearchFiltersSkeleton/SearchFiltersSkeleton";
+import { useQueryString } from "@/modules/navigation/hooks/useQueryString/useQueryString";
 
 export const SearchFilters = () => {
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const categoryQuery = searchParams.get("category");
   const filters = useGetWeaponFiltersByCategory(Number(categoryQuery));
+  const { createQueryString, pushQueryStringRouter } = useQueryString();
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(Array.from(searchParams.entries()));
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams],
-  );
   const handleFilterChange = (filterName: string) => {
-    router.replace(
-      pathname + "?" + createQueryString("filter", String(filterName)),
+    pushQueryStringRouter(
+      createQueryString([
+        { name: "filter", value: filterName },
+        { name: "query", value: "" },
+        { name: "page", value: "1" },
+      ]),
     );
   };
 
-  if (!filters.isSuccess) return <div>error</div>;
-  if (filters.isLoading) return <div>loader</div>;
+  if (filters.isLoading) return <SearchFiltersSkeleton />;
+  if (!filters.isSuccess)
+    return <ErrorMessage>Error loading filters</ErrorMessage>;
 
   return (
     <div className="flex flex-col space-y-2">
@@ -41,20 +39,3 @@ export const SearchFilters = () => {
     </div>
   );
 };
-
-// import { useGetCategoryIDByName } from "@/modules/weapons/useGetCategoryIDByName/hooks/useGetCategoryIDByName";
-// import { useGetWeaponFiltersByCategory } from "@/modules/weapons/useGetWeaponFiltersByCategory/hooks/useGetWeaponFiltersByCategory";
-// import { useSearchParams } from "next/navigation";
-
-// type SearchFiltersProps = {
-//   categoryID: number;
-// };
-
-// export const SearchFilters = ({ categoryID }: SearchFiltersProps) => {
-//   console.log(categoryID);
-//   const filters = useGetWeaponFiltersByCategory(categoryID);
-//   if (!filters.isSuccess) return <div>error z ladowaniem</div>;
-
-//   console.log(categoryID);
-//   return <div>SearchFilters</div>;
-// };
