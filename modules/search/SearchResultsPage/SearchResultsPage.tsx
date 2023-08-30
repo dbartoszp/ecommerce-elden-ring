@@ -1,7 +1,6 @@
 import { useGetWeaponsByRange } from "@/modules/weapons/useGetWeaponsBy/useGetWeaponsByRange/hooks/useGetWeaponsByRange";
 import { useSearchParams } from "next/navigation";
 import { SearchResultsCounter } from "./SearchResultsCounter/SearchResultsCounter";
-import { useGetWeaponCountByName } from "@/modules/weapons/useGetWeaponCount/useGetWeaponCountByName/hooks/useGetWeaponCountByName";
 import { SearchResultsNavigation } from "./SearchResultsNavigation/SearchResultsNavigation";
 import { useGetAllWeapons } from "@/modules/weapons/useGetAllWeapons/hooks/useGetAllWeapons";
 import { ErrorMessage } from "@/modules/ui/ErrorMessage/ErrorMessage";
@@ -15,24 +14,23 @@ type SearchResultsPageProps = {
 
 export const SearchResultsPage = ({ itemsPerPage }: SearchResultsPageProps) => {
   const searchParams = useSearchParams();
+  const weaponsAll = useGetAllWeapons();
+
   const nameQuery = searchParams.get("query") || "";
   const filterQuery = searchParams.get("filter") || "";
   const categoryQuery = Number(searchParams.get("category")) || 0;
+  const pageQuery = Number(searchParams.get("page")) || 1;
 
-  const weaponsAll = useGetAllWeapons();
-
-  const queryCountTest = useGetWeaponCount({
+  const queryCount = useGetWeaponCount({
     name: nameQuery,
     filter: filterQuery,
     categoryID: categoryQuery,
   });
 
-  const currentPage = Number(searchParams.get("page")) || 1;
-
   const weapons = useGetWeaponsByRange({
-    start: itemsPerPage * (currentPage - 1),
-    end: itemsPerPage * currentPage - 1,
-    name: searchParams.get("query") ?? "",
+    start: itemsPerPage * (pageQuery - 1),
+    end: itemsPerPage * pageQuery - 1,
+    name: nameQuery,
     categoryID: categoryQuery,
     filter: filterQuery,
   });
@@ -45,20 +43,20 @@ export const SearchResultsPage = ({ itemsPerPage }: SearchResultsPageProps) => {
     return <ErrorMessage>Error loading weapons</ErrorMessage>;
   }
 
-  if (!queryCountTest.isSuccess) {
+  if (!queryCount.isSuccess) {
     return <ErrorMessage>Error counting weapons</ErrorMessage>;
   }
   return (
     <div>
       <SearchResultsCounter
         results={weapons.data.length}
-        total={queryCountTest.data}
+        total={queryCount.data}
       />
       <div className="flex flex-col space-y-10">
         <WeaponList weapons={weapons.data} />
         <SearchResultsNavigation
           itemsPerPage={itemsPerPage}
-          queryCount={queryCountTest.data}
+          queryCount={queryCount.data}
         />
       </div>
     </div>

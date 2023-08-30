@@ -1,36 +1,27 @@
+import { Modal } from "@/modules/ui/Modal/Modal";
 import { SearchCategories } from "./SearchCategories/SearchCategories";
 import { SearchFilters } from "./SearchFilters/SearchFilters";
+import { useDisclosure } from "@/modules/ui/Modal/useDisclosure/useDisclosure";
 
 export const SearchFiltering = () => {
+  const { isOpen, close, changeOpenState } = useDisclosure();
+
   return (
-    <div>
-      <SearchCategories />
-      <SearchFilters />
+    <div className="mb-6 flex items-center justify-center">
+      <Modal
+        title="Filter weapons by categories and types"
+        openText="Filter weapons"
+        onClose={close}
+        onOpenChange={changeOpenState}
+        open={isOpen}
+      >
+        <div className="flex flex-col space-y-6">
+          <SearchCategories />
+          <div className="h-96">
+            <SearchFilters />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
-// import { useGetWeaponCategories } from "@/modules/weapons/useGetWeaponCategories/hooks/useGetWeaponCategories";
-// import { useSearchParams } from "next/navigation";
-// import { SearchCategories } from "./SearchCategories/SearchCategories";
-// import { SearchFilters } from "./SearchFilters/SearchFilters";
-// import { useGetCategoryIDByName } from "@/modules/weapons/useGetCategoryIDByName/hooks/useGetCategoryIDByName";
-
-// export const SearchFiltering = () => {
-//   const categories = useGetWeaponCategories();
-//   const searchParams = useSearchParams();
-//   const categoryQuery = searchParams.get("category");
-//   const categoryID = useGetCategoryIDByName(String(categoryQuery));
-
-//   if (!categories.isSuccess || !categoryID.isSuccess)
-//     return <div>error z ladowaniem</div>;
-//   const categoryIDData = categoryID.data || [];
-//   return (
-//     <div>
-//       <SearchCategories />
-//       {categoryIDData.length > 1 ? (
-//         <SearchFilters categoryID={categoryIDData[0].id} />
-//       ) : null}
-//       {/* <SearchFilters categoryID={categoryID.data[0].id} /> */}
-//     </div>
-//   );
-// };
